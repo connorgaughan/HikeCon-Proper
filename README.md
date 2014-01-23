@@ -1,12 +1,11 @@
-WordPress Starter Theme
+HikeCon
 ==============
 
-Starkers + Sassparilla + The Semantic Grid System
+What is HikeCon?
 --------------
 
-Created from the master version of Elliot Jay Stocks & Keir Whitaker's [Starkers](http://starkerstheme.com). 
-This version utlizes [Sassparilla](http://sass.fffunction.co/) in conjunction with the [Semantic Grid System](http://semantic.gs/) for rapid developement.
+Hike is a 1 day conference to not only inspire, but to help educate younger creatives as to the status of our community and the rapidly changing skills and requirements for talent in our industry.
 
-I use this as the base for all my WordPress development. Although, adding Sassparilla in the mix does add some basic styling to the nearly naked Starkers theme I believe the good outweighs the bad. 
+Attendees should leave with ways to make their personal brand stronger and intelligent actionable items to engage with our community.
 
  
