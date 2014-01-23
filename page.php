@@ -22,10 +22,58 @@
 		<div class="container">
 			<div class="colored full white">
 				<header>
-					<h3>Board</h3>
+					<h3>Meet the Board</h3>
 				</header>
 				<ul class="members">
 				<?php query_posts(array('post_type' => 'member', 'level' => 'board-member'));  while (have_posts ()): the_post(); ?> 
+					
+					<?php
+						$position = get_post_meta($post->ID, 'dbt_position', true);
+						$company = get_post_meta($post->ID, 'dbt_company', true);
+						$twitterHandle = get_post_meta($post->ID, 'dbt_twitter', true);
+						$tags = '@';
+						$twitter = str_replace($tags, "", $twitterHandle);
+					?>
+
+					<li>
+						<?php
+							if($twitterHandle){
+								echo '	<a href="https://twitter.com/' . $twitter . '" target="blank">';
+								echo		'<h4>' . the_post_thumbnail('people') . '</h4>';
+								echo		the_title();
+											if($position){
+												echo '<p>' . $position . '</p>';
+											}
+											if($company){
+												echo '<p>' . $company . '</p>';
+											}
+								echo ' 	</a></p>';
+							} else {
+								echo	'<h4>' . the_post_thumbnail('people') . '</h4>';
+								echo	the_title();
+
+								if($position){
+									echo '<p>' . $position . '</p>';
+								}
+								if($company){
+									echo '<p>' . $company . '</p>';
+								}
+							}
+						?>	
+					</li>
+								
+				<?php endwhile; ?>
+				</ul>
+				<?php wp_reset_query(); ?>
+			</div>
+		</div>
+		<div class="container">
+			<div class="colored full white">
+				<header>
+					<h3>Volunteers</h3>
+				</header>
+				<ul class="members">
+				<?php query_posts(array('post_type' => 'member', 'level' => 'volunteer'));  while (have_posts ()): the_post(); ?> 
 					
 					<?php
 						$position = get_post_meta($post->ID, 'dbt_position', true);
@@ -65,10 +113,6 @@
 				<?php endwhile; ?>
 				</ul>
 				<?php wp_reset_query(); ?>
-				<footer>
-					<p><a href="<?php echo wp_bloginfo('url'); ?>/board-and-volunteers">Made possible by these 
-	great volunteers</a>
-				</footer>
 			</div>
 		</div>
 	</section>

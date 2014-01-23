@@ -70,6 +70,19 @@ body {width: 100%; @extend .clearfix;}
 //-------------------------------------------------------------------------------------------------  Board
 
 
+//--------------------------------------------------------- Single Page
+.members{
+	@extend .is-centered;
+	li{ @include column(3); }
+	img{
+		display:block;
+		height:120px;
+		max-width:120px;
+		margin:0 auto;
+		@include border-radius(100%);
+	}
+}
+
 
 
 //-------------------------------------------------------------------------------------------------  Print styles

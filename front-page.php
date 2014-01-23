@@ -116,7 +116,7 @@
 			<header>
 				<h3>Confirmed Speakers &amp; Workshops</h3>
 			</header>
-			<h3>San Francisco</h3>
+			<h4>San Francisco</h4>
 			<p>
 				<?php query_posts(array( 'post_type' => 'speakers', 'location' => 'san-francisco'));  while (have_posts ()): the_post(); ?> 
 					
@@ -126,7 +126,7 @@
 				<?php wp_reset_query(); ?>
 			</p>
 
-			<h3>Chicago</h3>
+			<h4>Chicago</h4>
 			<p>
 				<?php query_posts(array( 'post_type' => 'speakers', 'location' => 'chicago'));  while (have_posts ()): the_post(); ?> 
 					
@@ -170,7 +170,7 @@
 				?>
 
 				<li>
-					<h5><?php the_title(); ?></h5>
+					<h4><?php the_title(); ?></h4>
 					<?php
 						if($position){
 							echo '<p>' . $position . '</p>';
