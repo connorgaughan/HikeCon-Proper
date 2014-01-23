@@ -1,0 +1,79 @@
+//-------------------------------------------------------------------------------------------------  Import Statements
+@import "compass/typography/vertical_rhythm";
+@import "compass/css3";
+@import "compass/utilities";
+@import "libs/reset";
+@import "libs/settings";
+@import "libs/mixins";
+@import "libs/grid";
+@import "libs/typography"; 	
+@import "libs/forms";	
+
+//-------------------------------------------------------------------------------------------------  General Styles
+body {width: 100%; @extend .clearfix;}
+.container {@extend .clearfix; margin: 0 auto; max-width: 1000px; padding:0 20px; }
+.colored{ padding:.75em; @include trailer(5); }
+.red{ background:$red; }
+.purple{ background:$purple; }
+.blue{ background:$blue; }
+.green{ background:$green; }
+.light-green{ background:$light-green; }
+.white{ background:$primary; color:$secondary; a{ color:$red; } }
+
+//-------------------------------------------------------------------------------------------------  Extends
+.is-uppercase {text-transform:uppercase; letter-spacing:1px;}
+.is-inline{@include inline-block();}
+.is-centered{text-align:center;}
+.clearfix{@include clearfix();}
+
+//-------------------------------------------------------------------------------------------------  Home
+
+
+//-------------------------------------------------------------------------------------------------  Why
+#why { 
+	@include adjust-font-size-to(20px, 5); 
+	p{ 
+		@include padding-trailer(3); 
+	} 
+}
+
+
+//-------------------------------------------------------------------------------------------------  Locations
+.button{
+	@extend .is-centered;
+	@include adjust-font-size-to(20px);
+	display:block;
+	width:85%;
+	margin:0 auto;
+	padding:.875em 0;
+	border:8px solid $primary;
+	color:$primary;
+}
+
+.ticket-info{
+	@include adjust-font-size-to(13px);
+	@include padding-leader(5);
+	color:#f8ea00;
+	display:block;
+	width:200px;
+	margin:0 auto;
+}
+
+
+//-------------------------------------------------------------------------------------------------  Speakers
+#speakers{
+	@extend .is-centered;
+}
+
+
+
+//-------------------------------------------------------------------------------------------------  Board
+
+
+
+
+//-------------------------------------------------------------------------------------------------  Print styles
+@media print {body {font-size: percentage(10 / 16);@include adjust-leading-to(2);}}
+
+//-------------------------------------------------------------------------------------------------  IOS specifics 
+@media screen and (max-width: 769px) {-webkit-text-size-adjust:none;}
