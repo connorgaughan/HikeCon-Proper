@@ -60,7 +60,7 @@
 						
 				<?php the_content(); ?> 
 
-				<div id="sanfran-map">Google Map Goes Here</div>
+				<div id="sanfran-map" class="g-map">Google Map Goes Here</div>
 
 				<?php
 					$myExcerpt = get_the_excerpt();
@@ -88,7 +88,7 @@
 						
 				<?php the_content(); ?> 
 
-				<div id="sanfran-map">SanFran Map Goes Here</div>
+				<div id="sanfran-map" class="g-map">SanFran Map Goes Here</div>
 
 				<?php
 					$myExcerpt = get_the_excerpt();
@@ -112,7 +112,7 @@
 
 <article id="speakers" class="scroll">
 	<div class="container">
-		<div class="colored full white">
+		<div class="white">
 			<header>
 				<h3>Confirmed Speakers &amp; Workshops</h3>
 			</header>
@@ -142,7 +142,7 @@
 	</div>
 </article>
 
-<sarticle id="sponsors" class="scroll">
+<article id="sponsors" class="scroll">
 	<div class="container">
 		<div class="colored full light-green">
 			<header>
@@ -154,7 +154,7 @@
 
 <article id="board" class="scroll">
 	<div class="container">
-		<div class="colored full white">
+		<div class="white">
 			<header>
 				<h3>Board</h3>
 			</header>
@@ -184,7 +184,7 @@
 			<?php endwhile; ?>
 			</ul>
 			<?php wp_reset_query(); ?>
-			<footer>
+			<footer class="clearfix">
 				<p><a href="<?php echo 	bloginfo(url); ?>/board-and-volunteers">Made possible by these great volunteers</a></p>
 			</footer>
 		</div>

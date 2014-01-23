@@ -12,25 +12,25 @@
 //-------------------------------------------------------------------------------------------------  General Styles
 body {width: 100%; @extend .clearfix;}
 .container {@extend .clearfix; margin: 0 auto; max-width: 1200px; padding:0 20px; }
-.colored{ padding:.75em; }
+.colored{ padding:1em; }
 .red{ background:$red; }
 .purple{ background:$purple; }
 .blue{ background:$blue; }
 .green{ background:$green; }
 .light-green{ background:$light-green; }
-.white{ background:$primary; color:$secondary; a{ color:$red; } }
+.white{ @extend .clearfix; background:$primary; color:$secondary; @include trailer(5); a{ color:$red; } }
 .full, .half{ @include column(12); @include trailer(5); }
+.white footer, .white header{ @include column(12); }
 
 //-------------------------------------------------------------------------------------------------  Extends
-.is-uppercase {text-transform:uppercase; letter-spacing:1px;}
+.is-uppercase {text-transform:uppercase;}
 .is-inline{@include inline-block();}
 .is-centered{text-align:center;}
 .clearfix{@include clearfix();}
 
 
 //-------------------------------------------------------------------------------------------------  Header
-
-//--------------------------------------------------------- Sticky Header
+//-------------------------------------------------------------------------------------------------  Header - Sticky
 .sticky{
 	@include padding-leader(2);
 	@include padding-trailer(2);
@@ -57,20 +57,27 @@ body {width: 100%; @extend .clearfix;}
 	}
 }	
 
+//-------------------------------------------------------------------------------------------------  Header - Nav
+
 
 //-------------------------------------------------------------------------------------------------  Home
 
 
 //-------------------------------------------------------------------------------------------------  Why
-#why{ 
-	@include adjust-font-size-to(20px, 5); 
-	p{ 
-		@include padding-trailer(3); 
-	} 
-}
+//-------------------------------------------------------------------------------------------------  Why - Typography
+#why{ p, li{ @include padding-trailer(4); @include adjust-font-size-to(20px, 5); } h3{ @include adjust-font-size-to(50px); @include padding-trailer(2); } }
 
 
 //-------------------------------------------------------------------------------------------------  Locations
+//-------------------------------------------------------------------------------------------------  Locations - Typography
+#locations{ h2{ @include adjust-font-size-to(45px); @include padding-trailer(2); } }
+.blue, .green{ h3{ @include adjust-font-size-to(20px); } }
+.blue h3+p{ @extend .is-uppercase; color:darken($blue, 15%); @include adjust-font-size-to(11px); @include padding-trailer(4); }
+.green h3+p{ @extend .is-uppercase; color:darken($green, 15%); @include adjust-font-size-to(11px); @include padding-trailer(4); }
+
+
+//-------------------------------------------------------------------------------------------------  Locations - Layout
+.g-map{ display:block; @include padding-leader(3); @include padding-trailer(8); }
 
 .button{
 	@extend .is-centered;
@@ -94,21 +101,36 @@ body {width: 100%; @extend .clearfix;}
 
 
 //-------------------------------------------------------------------------------------------------  Speakers
+//-------------------------------------------------------------------------------------------------  Speakers - Typography
 #speakers{
 	@extend .is-centered;
 	a{ @include adjust-font-size-to(30px); }
 	h3{ @include adjust-font-size-to(45px); color:$red; text-decoration:underline; }
-	h4{ @extend .is-uppercase; color:$purple; @include adjust-font-size-to(11px); @include padding-trailer(2); }
+	h4{ @extend .is-uppercase; color:$purple; @include adjust-font-size-to(11px); @include padding-trailer(5); @include padding-leader(7); }
 }
 
+
+//-------------------------------------------------------------------------------------------------  Board
+//-------------------------------------------------------------------------------------------------  Board - Typography
+#board{ 
+	h3{ @include adjust-font-size-to(45px); color:$red; text-decoration:underline; @include padding-trailer(2); } 
+	h4, a{ @include adjust-font-size-to(20px); color:$red; @include padding-trailer(.5); }
+	p{ @include adjust-font-size-to(15px); padding:0; line-height:1.25em; }
+	footer a{ @extend .is-inline; @include leader(2); @include padding-leader(4); border-top:4px solid $red; text-decoration:none; }
+}
 
 
 //-------------------------------------------------------------------------------------------------  People
+//-------------------------------------------------------------------------------------------------  People - Layout
 .people{
-	li{ @include column(12); }
+	li{ 
+		@include column(12); 
+		@include padding-trailer(4);
+	}
 }
 
-//--------------------------------------------------------- Single Page
+//-------------------------------------------------------------------------------------------------  People - Single Page
+//-------------------------------------------------------------------------------------------------  People - Single Page - Layout
 .board-and-volunteers .people, .attendees .people{ 
 	@extend .is-centered; 
 	img{
