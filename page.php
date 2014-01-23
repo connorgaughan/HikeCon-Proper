@@ -24,7 +24,7 @@
 				<header>
 					<h3>Meet the Board</h3>
 				</header>
-				<ul class="members">
+				<ul class="people">
 				<?php query_posts(array('post_type' => 'member', 'level' => 'board-member'));  while (have_posts ()): the_post(); ?> 
 					
 					<?php
@@ -72,7 +72,7 @@
 				<header>
 					<h3>Volunteers</h3>
 				</header>
-				<ul class="members">
+				<ul class="people">
 				<?php query_posts(array('post_type' => 'member', 'level' => 'volunteer'));  while (have_posts ()): the_post(); ?> 
 					
 					<?php

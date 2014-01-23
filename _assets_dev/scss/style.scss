@@ -11,14 +11,15 @@
 
 //-------------------------------------------------------------------------------------------------  General Styles
 body {width: 100%; @extend .clearfix;}
-.container {@extend .clearfix; margin: 0 auto; max-width: 1000px; padding:0 20px; }
-.colored{ padding:.75em; @include trailer(5); }
+.container {@extend .clearfix; margin: 0 auto; max-width: 1200px; padding:0 20px; }
+.colored{ padding:.75em; }
 .red{ background:$red; }
 .purple{ background:$purple; }
 .blue{ background:$blue; }
 .green{ background:$green; }
 .light-green{ background:$light-green; }
 .white{ background:$primary; color:$secondary; a{ color:$red; } }
+.full, .half{ @include column(12); @include trailer(5); }
 
 //-------------------------------------------------------------------------------------------------  Extends
 .is-uppercase {text-transform:uppercase; letter-spacing:1px;}
@@ -26,11 +27,42 @@ body {width: 100%; @extend .clearfix;}
 .is-centered{text-align:center;}
 .clearfix{@include clearfix();}
 
+
+//-------------------------------------------------------------------------------------------------  Header
+
+//--------------------------------------------------------- Sticky Header
+.sticky{
+	@include padding-leader(2);
+	@include padding-trailer(2);
+	width:100%;
+	.tickets{
+		@include adjust-font-size-to(15px);
+		@extend .is-centered;
+		@include column(6);
+		color:$tertiary;
+		span.red{
+			background:transparent;
+			color:$red;
+		}
+		a{
+			text-decoration:none;
+			color:$red;
+		}
+		.fade-out{
+			display:none;
+			opacity:0;
+			@include transition-property(all);
+			@include transition-duration(.5s);
+		}
+	}
+}	
+
+
 //-------------------------------------------------------------------------------------------------  Home
 
 
 //-------------------------------------------------------------------------------------------------  Why
-#why { 
+#why{ 
 	@include adjust-font-size-to(20px, 5); 
 	p{ 
 		@include padding-trailer(3); 
@@ -39,6 +71,7 @@ body {width: 100%; @extend .clearfix;}
 
 
 //-------------------------------------------------------------------------------------------------  Locations
+
 .button{
 	@extend .is-centered;
 	@include adjust-font-size-to(20px);
@@ -63,17 +96,21 @@ body {width: 100%; @extend .clearfix;}
 //-------------------------------------------------------------------------------------------------  Speakers
 #speakers{
 	@extend .is-centered;
+	a{ @include adjust-font-size-to(30px); }
+	h3{ @include adjust-font-size-to(45px); color:$red; text-decoration:underline; }
+	h4{ @extend .is-uppercase; color:$purple; @include adjust-font-size-to(11px); @include padding-trailer(2); }
 }
 
 
 
-//-------------------------------------------------------------------------------------------------  Board
-
+//-------------------------------------------------------------------------------------------------  People
+.people{
+	li{ @include column(12); }
+}
 
 //--------------------------------------------------------- Single Page
-.members{
-	@extend .is-centered;
-	li{ @include column(3); }
+.board-and-volunteers .people, .attendees .people{ 
+	@extend .is-centered; 
 	img{
 		display:block;
 		height:120px;
@@ -82,7 +119,6 @@ body {width: 100%; @extend .clearfix;}
 		@include border-radius(100%);
 	}
 }
-
 
 
 //-------------------------------------------------------------------------------------------------  Print styles

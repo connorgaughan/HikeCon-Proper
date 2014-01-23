@@ -14,7 +14,7 @@ $round-to-nearest-half-line			: false;
 //-------------------------------------------------------------------------------------------------  Base Typography
 body{@include adjust-font-size-to($base-font-size, 4); color:$primary;  font-family: 'ITCAvantGardeStd-Bold', helvetica, arial, sans-serif; -webkit-font-smoothing: antialiased; }
 .colored a{ color:$primary; text-decoration:none; }
-.white a{ color:$red; @include padding-trailer(.25); border-bottom:1px solid $red; }
+.white a{ color:$red; border-bottom:1px solid $red; }
 ul li{ list-style-type:none; }
 
 //-------------------------------------------------------------------------------------------------  Headlines
