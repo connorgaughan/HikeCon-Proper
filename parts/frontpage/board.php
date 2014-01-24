@@ -32,7 +32,7 @@
 				</ul>
 				<?php wp_reset_query(); ?>
 			</div>
-			<footer class="clearfix">
+			<footer>
 				<p><a href="<?php echo 	bloginfo(url); ?>/board-and-volunteers">Made possible by these great volunteers</a></p>
 			</footer>
 		</div>

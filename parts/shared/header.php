@@ -5,12 +5,12 @@
 	<div class="sticky">
 		<div class="container">
 			<div class="sanfran tickets">
-				<i class="icon-bridge"></i>
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/san-francisco-bridge.svg" alt="HikeCon" />
 				<p class="fade-out"><span class="red">San Francisco</span> @ Adobe &mdash;<br />April 5, 2014</p>
 				<p class="get-tickets"><a href="#">Get Tickets</a></p>
 			</div>
 			<div class="chi tickets">
-				<i class="icon-bean"></i>
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/cloud-gate-bean.svg" alt="HikeCon" />
 				<p class="fade-out"><span class="red">Chicago</span> @ Morningstar &mdash;<br />October 25, 2014</p>
 				<p class="get-tickets"><a href="#">Get Tickets</a></p>
 			</div>

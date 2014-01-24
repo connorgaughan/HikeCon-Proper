@@ -3,6 +3,7 @@
 		<article class="colored half blue">
 			<?php query_posts('page_id=16');  while (have_posts ()): the_post(); ?> 
 				<header>
+					<img class="bridge" src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/san-francisco-bridge.svg" alt="HikeCon" />
 					<h2><?php the_title(); ?></h2> 
 				</header>
 
@@ -34,7 +35,8 @@
 			<?php query_posts('page_id=18');  while (have_posts ()): the_post(); ?> 
 				
 				<header>
-					<h2><?php the_title(); ?></h2> 
+					<img class="bean" src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/cloud-gate-bean.svg" alt="HikeCon" />
+					<h2><?php the_title(); ?></h2>
 				</header>
 				
 				<div class="content">

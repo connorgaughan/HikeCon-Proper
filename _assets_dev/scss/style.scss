@@ -11,42 +11,16 @@
 
 //-------------------------------------------------------------------------------------------------  General Styles
 body {width: 100%; @extend .clearfix;}
-.container {@extend .clearfix; margin: 0 auto; max-width: 1200px; padding:0 30px; position:relative; }
-.scroll{ @include trailer(5); }
+.container {@extend .clearfix; margin: 0 auto; max-width: 900px; padding:0 20px; position:relative; }
+.scroll, #locations article:first-child{ @include trailer(5); }
 img{ max-width:100%; height:auto; }
-.colored{ 
-	padding:1em; 
-	&:before, &:after{ 
-		content:""; 
-		display:block; 
-		width:1.5em; 
-		height:1px; 
-		background:#000000; 
-		position:absolute; 
-		bottom:0; 
-	} 
-	&:before{ left:0; } 
-	&:after{ right:0; } 
-	header{
-		&:before, &:after{ 
-			content:""; 
-			display:block; 
-			width:1.5em; 
-			height:1px; 
-			background:#000000; 
-			position:absolute; 
-			top:0; 
-		} 
-		&:before{ left:0; } 
-		&:after{ right:0; }
-	}
-}
+.colored{ padding:2em 1em; }
 .red{ background:$red; }
 .purple{ background:$purple; }
 .blue{ background:$blue; }
 .green{ background:$green; }
 .light-green{ background:$light-green; }
-.white{ @extend .clearfix; background:$primary; color:$secondary; @include trailer(5); a{ color:$red; } }
+.white{ @extend .clearfix; background:$primary; color:$secondary; @include trailer(5); @include padding-leader(5); a{ color:$red; } }
 .full, .half{ @include column(12); }
 .container footer, .container header, .container .content{ @include column(12); }
 
@@ -78,9 +52,15 @@ img{ max-width:100%; height:auto; }
 		}
 		.fade-out{
 			display:none;
-			opacity:0;
-			@include transition-property(all);
-			@include transition-duration(.5s);
+		}
+		img{
+			display:block;
+			width:35%;
+			margin:0 auto;
+		}
+		.get-tickets{
+			vertical-align:bottom;
+			@include leader(2);
 		}
 	}
 }	
@@ -89,22 +69,45 @@ img{ max-width:100%; height:auto; }
 
 
 //-------------------------------------------------------------------------------------------------  Home
-
+#home img{
+	display:block;
+	margin:0 auto;
+}
 
 //-------------------------------------------------------------------------------------------------  Why
 //-------------------------------------------------------------------------------------------------  Why - Typography
-#why{ p{ @include padding-trailer(4); } h3{ @include adjust-font-size-to(50px); @include padding-trailer(2); } }
+#why{ 
+	p{ @include padding-trailer(4); } 
+	h3{ @include adjust-font-size-to(50px); @include padding-trailer(2); } 
+	.tabs{ display:block; @include padding-trailer(3); }
+}
 
 
 //-------------------------------------------------------------------------------------------------  Locations
 //-------------------------------------------------------------------------------------------------  Locations - Typography
-#locations{ h2{ @include adjust-font-size-to(45px); @include padding-trailer(2); } }
+#locations{ 
+	position:relative; 
+	max-width:1500px; 
+	width:100%; 
+	margin:0 auto; 
+	overflow:hidden;
+	.container{ overflow:visible; }
+	h2{ z-index:1000; @include adjust-font-size-to(45px); @include padding-trailer(2); } 
+}
 .blue, .green{ h3{ @include adjust-font-size-to(20px); } }
 .blue h3+p{ @extend .is-uppercase; color:darken($blue, 15%); @include adjust-font-size-to(11px); @include padding-trailer(4); }
 .green h3+p{ @extend .is-uppercase; color:darken($green, 15%); @include adjust-font-size-to(11px); @include padding-trailer(4); }
+.blue h3, .blue h2, .green h3, .green h2{ position:relative; z-index:1000; }
 
 
 //-------------------------------------------------------------------------------------------------  Locations - Layout
+.bridge, .bean{
+	position:relative;
+	display:block;
+	width:50%;
+	@include trailer(4)
+}
+
 .g-map{ display:block; @include padding-leader(3); @include padding-trailer(8); }
 
 .button{
@@ -118,12 +121,14 @@ img{ max-width:100%; height:auto; }
 	color:$primary;
 }
 
-.ticket-info{
+footer.ticket-info{
 	@include adjust-font-size-to(13px);
 	@include padding-leader(5);
 	color:#f8ea00;
 	display:block;
 	width:200px;
+	float:none;
+	clear:both;
 	margin:0 auto;
 }
 
@@ -178,6 +183,184 @@ img{ max-width:100%; height:auto; }
 		margin:0 auto;
 		@include border-radius(100%);
 	}
+}
+
+
+//-------------------------------------------------------------------------------------------------  Media Queries
+//-------------------------------------------------------------------------------------------------  Media Queries - 24em
+@media screen and (min-width: 24em){
+
+	//--------------------------------------------------------------------- General
+	.container{ padding:0 30px; }
+
+	.home .colored{ 
+		&:before, &:after{ 
+			content:""; 
+			display:block; 
+			width:1.5em; 
+			height:1px; 
+			background:#000000; 
+			position:absolute; 
+			bottom:0; 
+		} 
+		&:before{ left:0; } 
+		&:after{ right:0; } 
+		header{
+			&:before, &:after{ 
+				content:""; 
+				display:block; 
+				width:1.5em; 
+				height:1px; 
+				background:#000000; 
+				position:absolute; 
+				top:0; 
+			} 
+			&:before{ left:0; } 
+			&:after{ right:0; }
+		}
+	}
+
+	//--------------------------------------------------------------------- Board
+	#board footer{ @include column(10); }
+}
+
+//-------------------------------------------------------------------------------------------------  Media Queries - 32em
+@media screen and (min-width: 32em){
+
+	//--------------------------------------------------------------------- Board
+	.people li{ @include column(6); }
+	#board footer{ @include column(7); }
+}
+
+//-------------------------------------------------------------------------------------------------  Media Queries - 40em
+@media screen and (min-width: 40em){
+
+	//--------------------------------------------------------------------- General
+	.colored{ padding:4em 2.5em; }
+
+	.half{
+		@include column(6);
+		height:100%;
+	}
+
+
+	//--------------------------------------------------------------------- Header
+	.sticky .tickets .fade-out{
+		display:block;
+	}
+
+	.sticky .tickets{
+		img{
+			display:block;
+			width:25%;
+			margin:0 auto .5em auto;
+		}
+	}
+
+
+	//--------------------------------------------------------------------- Home
+	#home img{
+		@include padding-leader(15);
+		@include padding-trailer(15);
+	}
+
+	//--------------------------------------------------------------------- Why
+	#why{
+		p{ @include adjust-font-size-to(20px, 5); }
+		.content{ @include column(8); }
+		.tabs li{
+			@include padding-trailer(8);
+			display:inline;
+			padding-left:1em;
+			&:first-child{
+				padding-left:0;
+			}
+		}
+	}
+
+	//--------------------------------------------------------------------- Locations
+	#locations{.green h2{ @include padding-trailer(5); } article:first-child{ @include trailer(0); } }
+
+	.green{
+		padding-bottom:30%;
+		margin-bottom:-30%;
+	}
+
+	.button{ width:70%; }
+
+	.bridge{
+		position:absolute;
+		top:1.875em;
+		left:-90px;
+		width:30%;
+	}
+
+	.bean{
+		position:absolute;
+		top:3em;
+		right:-20px;
+		width:25%;
+		z-index:10;
+	}
+
+	//--------------------------------------------------------------------- Board
+	#board footer{ @include column(6); }
+}
+
+
+//-------------------------------------------------------------------------------------------------  Media Queries - 48em
+@media screen and (min-width: 48em){
+
+	//--------------------------------------------------------------------- Board
+	.people li{ @include column(4); }
+}
+
+//-------------------------------------------------------------------------------------------------  Media Queries - 56em
+@media screen and (min-width: 56em){
+
+	//--------------------------------------------------------------------- Header
+	.sticky .tickets{
+		img{
+			display:block;
+			width:15%;
+			margin:0 auto .5em auto;
+		}
+	}
+
+	//--------------------------------------------------------------------- Why
+	#why .tabs li{
+		@include adjust-font-size-to(20px);
+		@include padding-trailer(8);
+		display:inline;
+		padding-left:3em;
+		&:first-child{
+			padding-left:0;
+		}
+	}
+
+	//--------------------------------------------------------------------- Speakers
+	#speakers{
+		h3{ @include adjust-font-size-to(45px); }
+		a{ @include adjust-font-size-to(30px); }
+	}
+
+	//--------------------------------------------------------------------- Board
+	#board footer{ @include column(4); }
+}
+
+
+//-------------------------------------------------------------------------------------------------  Media Queries - 64em
+@media screen and (min-width: 64em){
+
+	//--------------------------------------------------------------------- Locations
+	footer.ticket-info{
+		@include column(6);
+		@include push(3);
+		@include pull(3);
+	}
+
+	//--------------------------------------------------------------------- Board
+	.people li{ @include column(3); @include padding-trailer(10); }
 }
 
 
