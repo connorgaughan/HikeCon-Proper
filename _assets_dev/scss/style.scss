@@ -11,16 +11,44 @@
 
 //-------------------------------------------------------------------------------------------------  General Styles
 body {width: 100%; @extend .clearfix;}
-.container {@extend .clearfix; margin: 0 auto; max-width: 1200px; padding:0 20px; }
-.colored{ padding:1em; }
+.container {@extend .clearfix; margin: 0 auto; max-width: 1200px; padding:0 30px; position:relative; }
+.scroll{ @include trailer(5); }
+img{ max-width:100%; height:auto; }
+.colored{ 
+	padding:1em; 
+	&:before, &:after{ 
+		content:""; 
+		display:block; 
+		width:1.5em; 
+		height:1px; 
+		background:#000000; 
+		position:absolute; 
+		bottom:0; 
+	} 
+	&:before{ left:0; } 
+	&:after{ right:0; } 
+	header{
+		&:before, &:after{ 
+			content:""; 
+			display:block; 
+			width:1.5em; 
+			height:1px; 
+			background:#000000; 
+			position:absolute; 
+			top:0; 
+		} 
+		&:before{ left:0; } 
+		&:after{ right:0; }
+	}
+}
 .red{ background:$red; }
 .purple{ background:$purple; }
 .blue{ background:$blue; }
 .green{ background:$green; }
 .light-green{ background:$light-green; }
 .white{ @extend .clearfix; background:$primary; color:$secondary; @include trailer(5); a{ color:$red; } }
-.full, .half{ @include column(12); @include trailer(5); }
-.white footer, .white header{ @include column(12); }
+.full, .half{ @include column(12); }
+.container footer, .container header, .container .content{ @include column(12); }
 
 //-------------------------------------------------------------------------------------------------  Extends
 .is-uppercase {text-transform:uppercase;}
@@ -65,7 +93,7 @@ body {width: 100%; @extend .clearfix;}
 
 //-------------------------------------------------------------------------------------------------  Why
 //-------------------------------------------------------------------------------------------------  Why - Typography
-#why{ p, li{ @include padding-trailer(4); @include adjust-font-size-to(20px, 5); } h3{ @include adjust-font-size-to(50px); @include padding-trailer(2); } }
+#why{ p{ @include padding-trailer(4); } h3{ @include adjust-font-size-to(50px); @include padding-trailer(2); } }
 
 
 //-------------------------------------------------------------------------------------------------  Locations
@@ -104,8 +132,18 @@ body {width: 100%; @extend .clearfix;}
 //-------------------------------------------------------------------------------------------------  Speakers - Typography
 #speakers{
 	@extend .is-centered;
-	a{ @include adjust-font-size-to(30px); }
-	h3{ @include adjust-font-size-to(45px); color:$red; text-decoration:underline; }
+	a{ 
+		@include adjust-font-size-to(20px); 
+		&:after{
+			@extend .is-inline;
+			content:",\00a0";
+			color:$red;
+		} 
+		&:last-child:after{
+			content:"";
+		}
+	}
+	h3{ @include adjust-font-size-to(35px); color:$red; text-decoration:underline; }
 	h4{ @extend .is-uppercase; color:$purple; @include adjust-font-size-to(11px); @include padding-trailer(5); @include padding-leader(7); }
 }
 
