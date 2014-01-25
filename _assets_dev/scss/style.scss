@@ -371,11 +371,11 @@ nav.menu.active{
 		content:"";
 		display:block;
 		right:85%; 
-		top:50px; 
+		top:40px; 
 		width:250px; 
 		height:111px;
 		position:absolute;
-		right:91%;
+		right:74%;
 		background: url(../images/icons/squiggle-gray.svg) 0 0 no-repeat;
 		background-size:cover;
 	}
@@ -455,7 +455,7 @@ nav.menu.active{
 @media screen and (min-width: 40em){
 
 	//--------------------------------------------------------------------- General
-	.colored{ padding:4em 2.5em; }
+	.colored{ padding:5.2em 2.5em; }
 
 	.half{
 		@include column(6);
