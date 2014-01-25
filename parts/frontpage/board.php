@@ -10,21 +10,18 @@
 					
 				<?php
 					$position = get_post_meta($post->ID, 'dbt_position', true);
-					$company = get_post_meta($post->ID, 'dbt_company', true);
 					$twitterHandle = get_post_meta($post->ID, 'dbt_twitter', true);
 					$tags = '@';
 					$twitter = str_replace($tags, "", $twitterHandle);
 				?>
 
 				<li>
-					<h4><?php the_title(); ?></h4>
 					<?php
-						if($position){
-							echo '<p>' . $position . '</p>';
-						}
-						if($company){
-							echo '<p>' . $company . '</p>';
-						}
+						echo	'<h4>';
+									the_title();
+						echo 	'</h4>';
+						echo 	'<p><a href="https://twitter.com/' . $twitter . '" target="blank">' . $twitterHandle . '</a></p>';
+						echo 	'<p>' . $position . '</p>';
 					?>
 				</li>
 								

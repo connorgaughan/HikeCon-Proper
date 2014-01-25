@@ -10,6 +10,7 @@
 @import "libs/forms";	
 
 //-------------------------------------------------------------------------------------------------  General Styles
+*{ outline:none; }
 body {
 	width: 100%;
 	position:absolute;
@@ -27,6 +28,8 @@ body.push-left{
 }
 
 .container {@extend .clearfix; margin: 0 auto; max-width: 900px; padding:0 20px; position:relative; }
+.board-and-volunteers #board .container,
+.attendees #attendee-list .container{ max-width:1200px; }
 .scroll, #locations article:first-child{ @include trailer(5); }
 img{ max-width:100%; height:auto; }
 .colored{ padding:2em 1em; }
@@ -79,7 +82,6 @@ img{ max-width:100%; height:auto; }
 		}
 	}
 	.hamburger{
-		outline:none;
 		color:$red;
 		position:fixed;
 		right:0px;
@@ -169,7 +171,14 @@ nav.menu.active{
 	}
 	p{ @include padding-trailer(4); } 
 	h3{ @include adjust-font-size-to(50px); @include padding-trailer(2); } 
-	.tabs{ display:block; @include padding-trailer(3); }
+	.tabs{ 
+		display:block; 
+		@include padding-trailer(3); 
+		.ui-tabs-active a{
+			color:$red;
+			text-decoration:underline;
+		}
+	}
 }
 
 .no-svg #why .content:before{  
@@ -246,6 +255,42 @@ nav.menu.active{
 	h4{ @extend .is-uppercase; color:$purple; @include adjust-font-size-to(11px); @include padding-trailer(5); @include padding-leader(7); }
 }
 
+//-------------------------------------------------------------------------------------------------  Speakers - Single
+#single-speaker{
+	.left, .right{ @include column(12); }
+	.left{
+		@extend .is-centered;
+		&:after{
+			content:"";
+			display:block;
+			width:2em;
+			height:3px;
+			background:darken($red, 35%);
+			margin:1em auto 2.5em auto;
+		}
+		img{
+			display:block;
+			height:120px;
+			max-width:120px;
+			margin:0 auto;
+			@include trailer(4);
+			@include border-radius(100%);
+		}
+		h1{ 
+			@include adjust-font-size-to(20px); 
+			@include padding-trailer(0);
+		}
+	}
+	.right{
+		h2{ @include adjust-font-size-to(50px); } 
+		time{ color:#222; @include padding-trailer(2); }
+		time+p{
+			@include padding-trailer(4);
+			@include padding-leader(2);
+		}
+	}
+}
+
 
 //-------------------------------------------------------------------------------------------------  Speakers - Layout
 #locations+#speakers{ @include leader(5); }
@@ -268,9 +313,9 @@ nav.menu.active{
 //-------------------------------------------------------------------------------------------------  Board - Typography
 #board{ 
 	h3{ @include adjust-font-size-to(45px); color:$red; text-decoration:underline; @include padding-trailer(2); } 
-	h4, a{ @include adjust-font-size-to(20px); color:$red; @include padding-trailer(.5); }
-	p{ @include adjust-font-size-to(15px); padding:0; line-height:1.25em; }
-	footer a{ @extend .is-inline; @include leader(2); @include padding-leader(4); border-top:4px solid $red; text-decoration:none; }
+	h4{ @include adjust-font-size-to(20px); color:$red; @include padding-trailer(.5); }
+	li a{ @include adjust-font-size-to(15px); padding:0; line-height:1.25em; color:$secondary; text-decoration:none; }
+	footer a{ @include adjust-font-size-to(20px); @extend .is-inline; @include leader(2); @include padding-leader(4); border-top:4px solid $red; text-decoration:none; }
 }
 
 
@@ -292,6 +337,7 @@ nav.menu.active{
 		height:120px;
 		max-width:120px;
 		margin:0 auto;
+		@include trailer(2);
 		@include border-radius(100%);
 	}
 }
@@ -397,11 +443,12 @@ nav.menu.active{
 			@include adjust-font-size-to(20px);
 			@include padding-trailer(8);
 			display:inline;
-			padding-left:3em;
+			padding-left:.75em;
 			&:first-child{
 				padding-left:0;
 			}
 		}
+		h3{ @include padding-leader(3); }
 	}
 
 	//--------------------------------------------------------------------- Locations
@@ -435,6 +482,19 @@ nav.menu.active{
 		a{ @include adjust-font-size-to(30px); }
 	}
 
+	#single-speaker{
+		.left{ @include column(4); }
+		.right{ @include column(8); }
+		.left{
+			text-align:left;
+			img{ margin:0; @include trailer(4); }
+			&:after{
+				content:"";
+				display:none;
+			}
+		}
+	}
+
 	//--------------------------------------------------------------------- Sponsors
 	#sponsors{
 		h3{ @include adjust-font-size-to(45px); }
@@ -456,6 +516,9 @@ nav.menu.active{
 
 //-------------------------------------------------------------------------------------------------  Media Queries - 48em
 @media screen and (min-width: 48em){
+
+	//--------------------------------------------------------------------- Why
+	#why .tabs li{ padding-left:3em; }
 
 	//--------------------------------------------------------------------- Board
 	#board footer{ @include column(4); }

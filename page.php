@@ -29,7 +29,6 @@
 					
 					<?php
 						$position = get_post_meta($post->ID, 'dbt_position', true);
-						$company = get_post_meta($post->ID, 'dbt_company', true);
 						$twitterHandle = get_post_meta($post->ID, 'dbt_twitter', true);
 						$tags = '@';
 						$twitter = str_replace($tags, "", $twitterHandle);
@@ -39,25 +38,22 @@
 						<?php
 							if($twitterHandle){
 								echo '	<a href="https://twitter.com/' . $twitter . '" target="blank">';
-								echo		'<h4>' . the_post_thumbnail('people') . '</h4>';
-								echo		the_title();
-											if($position){
-												echo '<p>' . $position . '</p>';
-											}
-											if($company){
-												echo '<p>' . $company . '</p>';
-											}
+								echo		the_post_thumbnail('people');
+								echo		'<h4>'; the_title(); echo '</h4>';
+							if($position){
+								echo 		'<p>' . $position . '</p>';
+							}
+								echo 		'<p>' . $twitterHandle . '</p>';
 								echo ' 	</a></p>';
-							} else {
-								echo	'<h4>' . the_post_thumbnail('people') . '</h4>';
-								echo	the_title();
 
-								if($position){
-									echo '<p>' . $position . '</p>';
-								}
-								if($company){
-									echo '<p>' . $company . '</p>';
-								}
+							} else {
+
+								echo		the_post_thumbnail('people');
+								echo		'<h4>' . the_title() . '</h4>';
+							if($position){
+								echo 		'<p>' . $position . '</p>';
+							}
+								echo 		'<p>' . $twitterHandle . '</p>';
 							}
 						?>	
 					</li>
@@ -87,25 +83,16 @@
 						<?php
 							if($twitterHandle){
 								echo '	<a href="https://twitter.com/' . $twitter . '" target="blank">';
-								echo		'<h5>' . the_post_thumbnail('people') . '</h5>';
-								echo		the_title();
-											if($position){
-												echo '<p>' . $position . '</p>';
-											}
-											if($company){
-												echo '<p>' . $company . '</p>';
-											}
+								echo		the_post_thumbnail('people');
+								echo		'<h4>'; the_title(); echo '</h4>';
+								echo 		'<p>' . $twitterHandle . '</p>';
 								echo ' 	</a></p>';
-							} else {
-								echo	'<h5>' . the_post_thumbnail('people') . '</h5>';
-								echo	the_title();
 
-								if($position){
-									echo '<p>' . $position . '</p>';
-								}
-								if($company){
-									echo '<p>' . $company . '</p>';
-								}
+							} else {
+								
+								echo		the_post_thumbnail('people');
+								echo		'<h4>'; the_title(); echo '</h4>';
+								echo 		'<p>' . $twitterHandle . '</p>';
 							}
 						?>	
 					</li>

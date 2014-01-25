@@ -5,6 +5,9 @@ jQuery(document).ready(function($) {
 		$('.menu').toggleClass('active');
 		$('.hamburger').toggleClass('close');
 	})
+	$(function() {
+		$( "#why .purple" ).tabs({show: 'fade', hide: 'fade'});
+	});
 });
 
 if (!Modernizr.svg) {

@@ -2,45 +2,51 @@
 
 $prefix = 'dbt_';
     
-$meta_box = array(
-	'id' => 'my-meta-box',
-    'title' => 'Member Details',
-    'page' => 'member',
-    'context' => 'normal',
+$speaker_box = array(
+	'id' => 'speaker-meta-box',
+    'title' => 'Speaker Details',
+    'page' => 'speakers',
+    'context' => 'side',
     'priority' => 'high',
     'fields' => array(
     array(
-    	'name' => 'Position Title',
+    	'name' => 'Talk Title',
     	'std' =>  '',
-    	'id' => $prefix . 'position',
+    	'id' => $prefix . 'talk-title',
     	'type' => 'text'
     ),
     array(
-    	'name' => 'Twitter Handle',
-    	'std' =>  '@',
-    	'id' => $prefix . 'twitter',
+    	'name' => 'Talk Time & Date',
+    	'std' =>  '',
+    	'id' => $prefix . 'talk-details',
     	'type' => 'text'
+    ),
+    array(
+        'name' => 'Twitter Handle',
+        'std' =>  '@',
+        'id' => $prefix . 'talk-twitter',
+        'type' => 'text'
     ))
 );
 
 
-add_action('admin_menu', 'member_add_box');
+add_action('admin_menu', 'speaker_add_box');
     
     // Add meta box
-    function member_add_box() {
-    global $meta_box;
-    	add_meta_box($meta_box['id'], $meta_box['title'], 'member_show_box', $meta_box['page'], $meta_box['context'], $meta_box['priority']);
+    function speaker_add_box() {
+    global $speaker_box;
+    	add_meta_box($speaker_box['id'], $speaker_box['title'], 'speaker_show_box', $speaker_box['page'], $speaker_box['context'], $speaker_box['priority']);
     }
     
     
     // Callback function to show fields in meta box
-    function member_show_box() {
-    global $meta_box, $post;
+    function speaker_show_box() {
+    global $speaker_box, $post;
     	// Use nonce for verification
-    	echo '<input type="hidden" name="mytheme_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
+    	echo '<input type="hidden" name="mytheme_speaker_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
     	echo '<table class="form-table">';
     
-    	foreach ($meta_box['fields'] as $field) {
+    	foreach ($speaker_box['fields'] as $field) {
 	    	
 	    	// get current post meta data
 	    	$meta = get_post_meta($post->ID, $field['id'], true);
@@ -67,14 +73,14 @@ add_action('admin_menu', 'member_add_box');
 		echo '</table>';
     }
     
-add_action('save_post', 'member_save_data');
+add_action('save_post', 'speaker_save_data');
 	
 	// Save data from meta box
-	function member_save_data($post_id) {
-	global $meta_box;
+	function speaker_save_data($post_id) {
+	global $speaker_box;
 
 	// verify nonce
-	if (!wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__))) {
+	if (!wp_verify_nonce($_POST['mytheme_speaker_box_nonce'], basename(__FILE__))) {
 		return $post_id;
     }
     
@@ -93,7 +99,7 @@ add_action('save_post', 'member_save_data');
     	return $post_id;
     }
     
-    foreach ($meta_box['fields'] as $field) {
+    foreach ($speaker_box['fields'] as $field) {
     	$old = get_post_meta($post_id, $field['id'], true);
     	$new = $_POST[$field['id']];
     		if ($new && $new != $old) {

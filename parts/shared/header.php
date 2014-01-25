@@ -6,12 +6,12 @@
 		</button>
 		<div class="container">
 			<div class="sanfran tickets">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/san-francisco-bridge.svg" alt="HikeCon" />
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/san-francisco-bridge.svg" alt="Bridge" />
 				<p class="fade-out"><span class="red">San Francisco</span> @ Adobe &mdash;<br />April 5, 2014</p>
 				<p class="get-tickets"><a href="#">Get Tickets</a></p>
 			</div>
 			<div class="chi tickets">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/cloud-gate-bean.svg" alt="HikeCon" />
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/cloud-gate-bean.svg" alt="Bean" />
 				<p class="fade-out"><span class="red">Chicago</span> @ Morningstar &mdash;<br />October 25, 2014</p>
 				<p class="get-tickets"><a href="#">Get Tickets</a></p>
 			</div>
