@@ -83,6 +83,23 @@ add_action('init', 'sponsors_register');
     register_post_type( 'sponsors' , $args );
 }  
 
+// Register Sponsors Locations
+function sponsors_taxonomy() {
+    register_taxonomy(
+        'tiers',
+        'sponsors',
+        array(
+            'hierarchical'          => true, 
+            'label'                 => 'Sponsor Tiers',
+            'public'                => true,
+            'query_var'             => true,
+            'show_ui'               => true,
+            'rewrite'               => true
+        )
+    );
+}
+add_action('init', 'sponsors_taxonomy');
+
 
 // Register Board & Volunteer
 add_action('init', 'member_register');  

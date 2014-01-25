@@ -82,9 +82,9 @@ img{ max-width:100%; height:auto; }
 		outline:none;
 		color:$red;
 		position:fixed;
-		right:10px;
+		right:0px;
 		top:30px;
-		z-index:1000;
+		z-index:99999;
 	}
 }	
 
@@ -98,12 +98,13 @@ nav.menu{
 	right:-270px;
 	top:0;
 	background:$purple;
+	z-index:55555;
 	@include transition-property(right);
   	@include transition-duration(.875s);
   	@include transition-timing-function(ease-in-out);
 	a{ color:$primary; }
 	ul{
-		padding:2.25em 1em;
+		padding:2.25em;
 		height:100%;
 	}
 }
@@ -245,8 +246,16 @@ nav.menu.active{
 	h4{ @extend .is-uppercase; color:$purple; @include adjust-font-size-to(11px); @include padding-trailer(5); @include padding-leader(7); }
 }
 
+
 //-------------------------------------------------------------------------------------------------  Speakers - Layout
 #locations+#speakers{ @include leader(5); }
+
+
+//-------------------------------------------------------------------------------------------------  Sponsors
+//-------------------------------------------------------------------------------------------------  Sponsors - Typography
+#sponsors{
+	h3{ @extend .is-centered; @include adjust-font-size-to(35px); @include padding-trailer(3); }
+}
 
 //-------------------------------------------------------------------------------------------------  Board
 //-------------------------------------------------------------------------------------------------  Board - Typography
@@ -322,6 +331,9 @@ nav.menu.active{
 //-------------------------------------------------------------------------------------------------  Media Queries - 32em
 @media screen and (min-width: 32em){
 
+	//--------------------------------------------------------------------- Header
+	.lines-button{ padding:1em; }
+
 	//--------------------------------------------------------------------- Board
 	.people li{ @include column(6); }
 	#board footer{ @include column(7); }
@@ -347,11 +359,10 @@ nav.menu.active{
 	.sticky .tickets{
 		img{
 			display:block;
-			width:25%;
+			width:15%;
 			margin:0 auto .5em auto;
 		}
 	}
-
 
 	//--------------------------------------------------------------------- Home
 	#home img{
@@ -366,9 +377,10 @@ nav.menu.active{
 		p{ @include adjust-font-size-to(20px, 5); }
 		.content{ @include column(8); }
 		.tabs li{
+			@include adjust-font-size-to(20px);
 			@include padding-trailer(8);
 			display:inline;
-			padding-left:1em;
+			padding-left:3em;
 			&:first-child{
 				padding-left:0;
 			}
@@ -400,6 +412,17 @@ nav.menu.active{
 		z-index:10;
 	}
 
+	//--------------------------------------------------------------------- Speakers
+	#speakers{
+		h3{ @include adjust-font-size-to(45px); }
+		a{ @include adjust-font-size-to(30px); }
+	}
+
+	//--------------------------------------------------------------------- Sponsors
+	#sponsors{
+		h3{ @include adjust-font-size-to(45px); @include padding-trailer(5); }
+	}
+
 	//--------------------------------------------------------------------- Board
 	#board footer{ @include column(6); }
 }
@@ -409,40 +432,8 @@ nav.menu.active{
 @media screen and (min-width: 48em){
 
 	//--------------------------------------------------------------------- Board
-	.people li{ @include column(4); }
-}
-
-//-------------------------------------------------------------------------------------------------  Media Queries - 56em
-@media screen and (min-width: 56em){
-
-	//--------------------------------------------------------------------- Header
-	.sticky .tickets{
-		img{
-			display:block;
-			width:15%;
-			margin:0 auto .5em auto;
-		}
-	}
-
-	//--------------------------------------------------------------------- Why
-	#why .tabs li{
-		@include adjust-font-size-to(20px);
-		@include padding-trailer(8);
-		display:inline;
-		padding-left:3em;
-		&:first-child{
-			padding-left:0;
-		}
-	}
-
-	//--------------------------------------------------------------------- Speakers
-	#speakers{
-		h3{ @include adjust-font-size-to(45px); }
-		a{ @include adjust-font-size-to(30px); }
-	}
-
-	//--------------------------------------------------------------------- Board
 	#board footer{ @include column(4); }
+	.people li{ @include column(4); }
 }
 
 

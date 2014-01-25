@@ -1,7 +1,8 @@
 // =========== General button styles & variables =======================================//
 button{
   display:inline-block;
-  margin: 0 1em;
+  margin: 0;
+  padding:0;
   border:none;
   background:none;
   
@@ -18,7 +19,6 @@ $transition: .3s;// increase this to see the transformations happen in slow moti
 $button-size : 2em; 
 //common to all three-liners
 .lines-button {
-  padding: $button-size/2 $button-size/4;
   transition: .3s;
   cursor: pointer;
   user-select: none;
