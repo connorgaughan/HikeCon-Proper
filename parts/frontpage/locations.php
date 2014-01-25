@@ -1,6 +1,6 @@
 <section id="locations" class="scroll">
 	<div class="container">
-		<article class="colored half blue">
+		<article class="colored half blue" id="sanfran">
 			<?php query_posts('page_id=16');  while (have_posts ()): the_post(); ?> 
 				<header>
 					<img class="bridge" src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/san-francisco-bridge.svg" alt="HikeCon" />
@@ -10,7 +10,7 @@
 				<div class="content">		
 					<?php the_content(); ?> 
 
-					<div id="sanfran-map" class="g-map">Google Map Goes Here</div>
+					<div id="sanfran-map" class="g-map"></div>
 
 					<?php
 						$myExcerpt = get_the_excerpt();
@@ -31,7 +31,7 @@
 			<?php wp_reset_query(); ?>
 		</article>
 
-		<article class="colored half green">
+		<article class="colored half green" id="chicago">
 			<?php query_posts('page_id=18');  while (have_posts ()): the_post(); ?> 
 				
 				<header>

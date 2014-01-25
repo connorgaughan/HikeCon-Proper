@@ -57,11 +57,14 @@
 	
 	// Scripts
 	function starkers_script_enqueuer() {
-		wp_register_script( 'site', get_template_directory_uri().'/_assets_production/js/site.min.js', array( 'jquery' ) );
-		wp_enqueue_script( 'site' );
-
 		wp_register_script( 'ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js', array( 'jquery' ) );
 		wp_enqueue_script( 'ui' );
+
+		wp_register_script( 'g-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places', array( 'jquery' ) );
+		wp_enqueue_script( 'g-maps' );
+		
+		wp_register_script( 'site', get_template_directory_uri().'/_assets_production/js/site.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'site' );
 
 		wp_register_style( 'screen', get_stylesheet_directory_uri().'/_assets_production/css/style.css', '', '', 'screen' );
         wp_enqueue_style( 'screen' );

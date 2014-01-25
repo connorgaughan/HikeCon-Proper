@@ -1,4 +1,8 @@
+<?php if(is_front_page()) : ?>
+<header class="front">
+<?php else : ?>
 <header>
+<?php endif; ?>
 	<?php wp_nav_menu( array( 'container' => 'nav', 'container_class' => 'menu', 'theme_location' => 'primary' ) ); ?>
 	<div class="sticky">
 		<button class="hamburger lines-button x" type="button" role="button" aria-label="Toggle Navigation">

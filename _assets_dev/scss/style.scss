@@ -29,7 +29,7 @@ body.push-left{
 
 .container {@extend .clearfix; margin: 0 auto; max-width: 900px; padding:0 20px; position:relative; }
 .board-and-volunteers #board .container,
-.attendees #attendee-list .container{ max-width:1200px; }
+.attendees #attendee-list .container,{ max-width:1200px; }
 .scroll, #locations article:first-child{ @include trailer(5); }
 img{ max-width:100%; height:auto; }
 .colored{ padding:2em 1em; }
@@ -108,6 +108,15 @@ nav.menu{
 	ul{
 		padding:2.25em;
 		height:100%;
+		li{
+			@include adjust-font-size-to(20px);
+			margin:0;
+			padding:0 0 .125em 0;
+			a{ text-decoration:none; }
+		}
+		li.break{
+			@include padding-trailer(3);
+		}
 	}
 }
 
@@ -126,26 +135,11 @@ nav.menu.active{
 	margin:0 auto; 
 	@include trailer(5);
 	overflow:hidden;
-	.container{ overflow:visible; }
-	h1:before{
-		content:"";
-		display:block;
-		width:146px;
-		height:65px;
-		position:absolute;
-		top:32px;
-		right:91%;
-		background: url(../images/icons/squiggle-gray.svg) 0 0 no-repeat;
-		background-size:cover;
-	}
+	.container{ overflow:visible; }	
 	img{
 		display:block;
 		margin:0 auto;
 	}
-}
-
-.no-svg #home h1:before{
-	background: url(../images/icons/squiggle-gray.png) 0 0 no-repeat;
 }
 
 //-------------------------------------------------------------------------------------------------  Why
@@ -158,17 +152,6 @@ nav.menu.active{
 	@include trailer(5);
 	overflow:hidden;
 	.container{ overflow:visible; }
-	.content:before{
-		content:"";
-		display:block;
-		width:305px;
-		height:108px;
-		position:absolute;
-		top:75px;
-		left:85%;
-		background: url(../images/icons/squiggle-blue.svg) 0 0 no-repeat;
-		background-size:cover;
-	}
 	p{ @include padding-trailer(4); } 
 	h3{ @include adjust-font-size-to(50px); @include padding-trailer(2); } 
 	.tabs{ 
@@ -179,10 +162,6 @@ nav.menu.active{
 			text-decoration:underline;
 		}
 	}
-}
-
-.no-svg #why .content:before{  
-	background: url(../images/icons/squiggle-blue.png) 0 0 no-repeat;
 }
 
 
@@ -211,7 +190,7 @@ nav.menu.active{
 	@include trailer(4)
 }
 
-.g-map{ display:block; @include padding-leader(3); @include padding-trailer(8); }
+.g-map{ display:block; @include leader(3); @include trailer(8); height:150px; width:100%; }
 
 .button{
 	@extend .is-centered;
@@ -299,7 +278,18 @@ nav.menu.active{
 //-------------------------------------------------------------------------------------------------  Sponsors
 //-------------------------------------------------------------------------------------------------  Sponsors - Typography
 #sponsors{
-	h3{ @extend .is-centered; @include adjust-font-size-to(35px); @include padding-trailer(3); }
+	position:relative; 
+	max-width:1500px; 
+	width:100%; 
+	margin:0 auto; 
+	@include trailer(5);
+	overflow:hidden;
+	.container{ overflow:visible; }
+	h3{ 
+		@extend .is-centered; 
+		@include adjust-font-size-to(35px); 
+		@include padding-trailer(3); 
+	}
 }
 //-------------------------------------------------------------------------------------------------  Sponsors - Layout
 #sponsors{
@@ -377,6 +367,65 @@ nav.menu.active{
 		}
 	}
 
+	#home h1:before{
+		content:"";
+		display:block;
+		right:85%; 
+		top:50px; 
+		width:250px; 
+		height:111px;
+		position:absolute;
+		right:91%;
+		background: url(../images/icons/squiggle-gray.svg) 0 0 no-repeat;
+		background-size:cover;
+	}
+
+	.no-svg #home h1:before{
+		background: url(../images/icons/squiggle-gray.png) 0 0 no-repeat;
+	}
+
+	#why .content:before{
+		content:"";
+		display:block;
+		width:305px;
+		height:108px;
+		position:absolute;
+		top:75px;
+		left:85%;
+		background: url(../images/icons/squiggle-blue.svg) 0 0 no-repeat;
+		background-size:cover;
+	}
+
+	.no-svg #why .content:before{  
+		background: url(../images/icons/squiggle-blue.png) 0 0 no-repeat;
+	}
+
+	#sponsors h3{
+		&:before, &:after{
+			content:"";
+			display:block;
+			width:250px;
+			position:absolute;
+			background: url(../images/icons/squiggle-gray.svg) 0 0 no-repeat;
+		}
+		&:before{
+			height:80px;
+			top:50px;
+			left:85%;
+		}
+		&:after{
+			height:40px;
+			right:90%;
+			bottom:10px;
+		}
+	}
+
+	.no-svg #sponsors h3{
+		&:before, &:after{
+			background: url(../images/icons/squiggle-gray.png) 0 0 no-repeat;
+		}
+	}
+
 	//--------------------------------------------------------------------- Board
 	#board footer{ @include column(10); }
 }
@@ -427,13 +476,13 @@ nav.menu.active{
 		}
 	}
 
+
 	//--------------------------------------------------------------------- Home
 	#home img{
 		@include padding-leader(15);
 		@include padding-trailer(15);
 	}
 
-	#home h1:before{ right:85%; top:50px; width:250px; height:111px; background-size:cover; }
 
 	//--------------------------------------------------------------------- Why
 	#why{
@@ -497,7 +546,9 @@ nav.menu.active{
 
 	//--------------------------------------------------------------------- Sponsors
 	#sponsors{
-		h3{ @include adjust-font-size-to(45px); }
+		h3{ 
+			@include adjust-font-size-to(45px); 
+		}
 		.tier-one li{
 			@include column(4);
 		}
