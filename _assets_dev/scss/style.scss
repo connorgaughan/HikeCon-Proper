@@ -10,7 +10,22 @@
 @import "libs/forms";	
 
 //-------------------------------------------------------------------------------------------------  General Styles
-body {width: 100%; @extend .clearfix;}
+body {
+	width: 100%;
+	position:absolute;
+	left:0; 
+	@extend .clearfix;
+	@include transition-property(left);
+  	@include transition-duration(.875s);
+  	@include transition-timing-function(ease-in-out);
+}
+body.push-left{
+	left:-200px;
+	@include transition-property(left);
+  	@include transition-duration(.875s);
+  	@include transition-timing-function(ease-in-out);
+}
+
 .container {@extend .clearfix; margin: 0 auto; max-width: 900px; padding:0 20px; position:relative; }
 .scroll, #locations article:first-child{ @include trailer(5); }
 img{ max-width:100%; height:auto; }
@@ -20,7 +35,7 @@ img{ max-width:100%; height:auto; }
 .blue{ background:$blue; }
 .green{ background:$green; }
 .light-green{ background:$light-green; }
-.white{ @extend .clearfix; background:$primary; color:$secondary; @include trailer(5); @include padding-leader(5); a{ color:$red; } }
+.white{ background:$primary; color:$secondary; a{ color:$red; } }
 .full, .half{ @include column(12); }
 .container footer, .container header, .container .content{ @include column(12); }
 
@@ -63,23 +78,101 @@ img{ max-width:100%; height:auto; }
 			@include leader(2);
 		}
 	}
+	.hamburger{
+		outline:none;
+		color:$red;
+		position:fixed;
+		right:10px;
+		top:30px;
+		z-index:1000;
+	}
 }	
 
-//-------------------------------------------------------------------------------------------------  Header - Nav
+@import "libs/menu";
 
+//-------------------------------------------------------------------------------------------------  Header - Nav
+nav.menu{
+	width:270px;
+	height:100%;
+	position:fixed;
+	right:-270px;
+	top:0;
+	background:$purple;
+	@include transition-property(right);
+  	@include transition-duration(.875s);
+  	@include transition-timing-function(ease-in-out);
+	a{ color:$primary; }
+	ul{
+		padding:2.25em 1em;
+		height:100%;
+	}
+}
+
+nav.menu.active{
+	right:0;
+	@include transition-property(right);
+  	@include transition-duration(.875s);
+  	@include transition-timing-function(ease-in-out);
+}
 
 //-------------------------------------------------------------------------------------------------  Home
-#home img{
-	display:block;
-	margin:0 auto;
+#home {
+	position:relative; 
+	max-width:1500px; 
+	width:100%; 
+	margin:0 auto; 
+	@include trailer(5);
+	overflow:hidden;
+	.container{ overflow:visible; }
+	h1:before{
+		content:"";
+		display:block;
+		width:146px;
+		height:65px;
+		position:absolute;
+		top:32px;
+		right:91%;
+		background: url(../images/icons/squiggle-gray.svg) 0 0 no-repeat;
+		background-size:cover;
+	}
+	img{
+		display:block;
+		margin:0 auto;
+	}
+}
+
+.no-svg #home h1:before{
+	background: url(../images/icons/squiggle-gray.png) 0 0 no-repeat;
 }
 
 //-------------------------------------------------------------------------------------------------  Why
 //-------------------------------------------------------------------------------------------------  Why - Typography
 #why{ 
+	position:relative; 
+	max-width:1500px; 
+	width:100%; 
+	margin:0 auto; 
+	@include trailer(5);
+	overflow:hidden;
+	.container{ overflow:visible; }
+	.content:before{
+		content:"";
+		display:block;
+		width:305px;
+		height:108px;
+		position:absolute;
+		top:75px;
+		left:85%;
+		background: url(../images/icons/squiggle-blue.svg) 0 0 no-repeat;
+		background-size:cover;
+	}
 	p{ @include padding-trailer(4); } 
 	h3{ @include adjust-font-size-to(50px); @include padding-trailer(2); } 
 	.tabs{ display:block; @include padding-trailer(3); }
+}
+
+.no-svg #why .content:before{  
+	background: url(../images/icons/squiggle-blue.png) 0 0 no-repeat;
 }
 
 
@@ -121,7 +214,7 @@ img{ max-width:100%; height:auto; }
 	color:$primary;
 }
 
-footer.ticket-info{
+.ticket-info{
 	@include adjust-font-size-to(13px);
 	@include padding-leader(5);
 	color:#f8ea00;
@@ -152,6 +245,8 @@ footer.ticket-info{
 	h4{ @extend .is-uppercase; color:$purple; @include adjust-font-size-to(11px); @include padding-trailer(5); @include padding-leader(7); }
 }
 
+//-------------------------------------------------------------------------------------------------  Speakers - Layout
+#locations+#speakers{ @include leader(5); }
 
 //-------------------------------------------------------------------------------------------------  Board
 //-------------------------------------------------------------------------------------------------  Board - Typography
@@ -264,6 +359,8 @@ footer.ticket-info{
 		@include padding-trailer(15);
 	}
 
+	#home h1:before{ right:85%; top:50px; width:250px; height:111px; background-size:cover; }
+
 	//--------------------------------------------------------------------- Why
 	#why{
 		p{ @include adjust-font-size-to(20px, 5); }
@@ -351,13 +448,6 @@ footer.ticket-info{
 
 //-------------------------------------------------------------------------------------------------  Media Queries - 64em
 @media screen and (min-width: 64em){
-
-	//--------------------------------------------------------------------- Locations
-	footer.ticket-info{
-		@include column(6);
-		@include push(3);
-		@include pull(3);
-	}
 
 	//--------------------------------------------------------------------- Board
 	.people li{ @include column(3); @include padding-trailer(10); }

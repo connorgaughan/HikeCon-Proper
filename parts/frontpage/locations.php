@@ -21,11 +21,11 @@
 					<a class="button tickets" href="<?php echo $myExcerpt; ?>" target="blank">Buy Tickets</a>
 				</div>
 
-				<footer class="ticket-info">
+				<div class="ticket-info">
 					<p>Earlybird (until 3/1) &mdash; $30</p>
 					<p>Students &mdash; $30</p>
 					<p>General Admisison &mdash; $80</p>
-				</footer>
+				</div>
 
 			<?php endwhile; ?>
 			<?php wp_reset_query(); ?>
@@ -55,11 +55,11 @@
 
 				</div>
 
-				<footer class="ticket-info">
+				<div class="ticket-info">
 					<p>Earlybird (until 3/1) &mdash; $30</p>
 					<p>Students &mdash; $30</p>
 					<p>General Admisison &mdash; $80</p>
-				</footer>
+				</div>
 
 			<?php endwhile; ?>
 			<?php wp_reset_query(); ?>
