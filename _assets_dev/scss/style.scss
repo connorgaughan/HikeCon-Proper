@@ -256,6 +256,13 @@ nav.menu.active{
 #sponsors{
 	h3{ @extend .is-centered; @include adjust-font-size-to(35px); @include padding-trailer(3); }
 }
+//-------------------------------------------------------------------------------------------------  Sponsors - Layout
+#sponsors{
+	.tier-one li, .tier-two li, .tier-three li{
+		@include column(12);
+	}
+}
+
 
 //-------------------------------------------------------------------------------------------------  Board
 //-------------------------------------------------------------------------------------------------  Board - Typography
@@ -337,6 +344,16 @@ nav.menu.active{
 	//--------------------------------------------------------------------- Board
 	.people li{ @include column(6); }
 	#board footer{ @include column(7); }
+
+	//--------------------------------------------------------------------- Sponsors
+	#sponsors{
+		.tier-one li{
+			@include column(6);
+		}
+		.tier-two li, .tier-three li{
+			@include column(4);
+		}
+	}
 }
 
 //-------------------------------------------------------------------------------------------------  Media Queries - 40em
@@ -420,7 +437,16 @@ nav.menu.active{
 
 	//--------------------------------------------------------------------- Sponsors
 	#sponsors{
-		h3{ @include adjust-font-size-to(45px); @include padding-trailer(5); }
+		h3{ @include adjust-font-size-to(45px); }
+		.tier-one li{
+			@include column(4);
+		}
+		.tier-two li{
+			@include column(3);
+		}
+		.tier-three li{
+			@include column(2);
+		}
 	}
 
 	//--------------------------------------------------------------------- Board
