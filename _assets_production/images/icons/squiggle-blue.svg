@@ -6,11 +6,6 @@
 <style type="text/css">
 	.st0{fill:none;stroke:#0192CE;stroke-width:12;stroke-miterlimit:10;}
 	.st1{fill:none;stroke:#0192CE;stroke-width:12;stroke-linecap:square;stroke-miterlimit:10;}
-	.st2{fill:none;stroke:#3F3E40;stroke-width:12;stroke-miterlimit:10;}
-	.st3{fill:none;stroke:#F8EA00;stroke-width:26.5893;stroke-miterlimit:10;}
-	.st4{fill:none;stroke:#B00F0F;stroke-width:25;stroke-linecap:round;stroke-miterlimit:10;}
-	.st5{fill:none;stroke:#B00F0F;stroke-width:25.0024;stroke-linecap:round;stroke-miterlimit:10;}
-	.st6{fill:#FFFFFF;}
 </style>
 <g id="squiggle-blue">
 	<g>
@@ -22,13 +17,5 @@
 			c19,0,19,18.3,38.1,18.3c19,0,19-18.3,38.1-18.3c19,0,19,18.3,38.1,18.3c19,0,19-18.3,38.1-18.3"/>
 	</g>
 	<line class="st1" x1="299.2" y1="104.4" x2="197" y2="104.4"/>
-</g>
-<g id="squiggle-gray">
-</g>
-<g id="bean-cloud-gate">
-</g>
-<g id="san-francisco-bridge_1_">
-</g>
-<g id="hike">
 </g>
 </svg>

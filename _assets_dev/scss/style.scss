@@ -78,7 +78,6 @@ img{ max-width:100%; height:auto; }
 		}
 		.get-tickets{
 			vertical-align:bottom;
-			@include leader(2);
 		}
 	}
 	.hamburger{
@@ -239,6 +238,9 @@ nav.menu.active{
 
 //-------------------------------------------------------------------------------------------------  Speakers - Single
 #single-speaker{
+	.colored{
+		padding-bottom:2em;
+	}
 	.left, .right{ @include column(12); }
 	.left{
 		@extend .is-centered;
@@ -269,6 +271,14 @@ nav.menu.active{
 		time+p{
 			@include padding-trailer(4);
 			@include padding-leader(2);
+		}
+	}
+	footer{
+		@include leader(5);
+		@include padding-leader(5);
+		border-top:1px solid darken($red, 30%);
+		.prev, .next{
+			@include column(12);
 		}
 	}
 }
@@ -552,7 +562,41 @@ nav.menu.active{
 				display:none;
 			}
 		}
+		footer .prev, footer .next{
+			@include column(6);
+		}
+		footer .prev:before{
+			content:"";
+			display:block;
+			right:85%; 
+			bottom:6.5em; 
+			width:250px; 
+			height:80px;
+			position:absolute;
+			background: url(../images/icons/squiggle-gray.svg) 0 0 no-repeat;
+			background-size:cover;
+		}
+		.photo{
+			position:relative;
+			.location-icon{
+				display:block;
+				height:40px;
+				width:40px;
+				padding:.125em;
+				margin:0;
+				background:$primary;
+				@include border-radius(100%);
+				position:absolute;
+				bottom:-5px;;
+				left:-5px;
+			}
+		}
 	}
+	.no-svg #single-speaker footer .prev:before{
+		background: url(../images/icons/squiggle-gray.png) 0 0 no-repeat;
+	}
+
+
 
 	//--------------------------------------------------------------------- Sponsors
 	#sponsors{

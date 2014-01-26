@@ -4,16 +4,8 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="251.7px"
 	 height="110.5px" viewBox="0 0 251.7 110.5" style="enable-background:new 0 0 251.7 110.5;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#0192CE;stroke-width:12;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#0192CE;stroke-width:12;stroke-linecap:square;stroke-miterlimit:10;}
 	.st2{fill:none;stroke:#3F3E40;stroke-width:12;stroke-miterlimit:10;}
-	.st3{fill:none;stroke:#F8EA00;stroke-width:26.5893;stroke-miterlimit:10;}
-	.st4{fill:none;stroke:#B00F0F;stroke-width:25;stroke-linecap:round;stroke-miterlimit:10;}
-	.st5{fill:none;stroke:#B00F0F;stroke-width:25.0024;stroke-linecap:round;stroke-miterlimit:10;}
-	.st6{fill:#FFFFFF;}
 </style>
-<g id="squiggle-blue">
-</g>
 <g id="squiggle-gray">
 	<g>
 		<path class="st2" d="M0.9,88.5c15.7,0,15.7,15.1,31.5,15.1c15.7,0,15.7-15.1,31.5-15.1c15.7,0,15.7,15.1,31.5,15.1
@@ -30,11 +22,5 @@
 			s15.7-15.1,31.5-15.1c15.7,0,15.7,15.1,31.5,15.1c15.7,0,15.7-15.1,31.5-15.1c15.7,0,15.7,15.1,31.5,15.1
 			c15.7,0,15.7-15.1,31.5-15.1"/>
 	</g>
-</g>
-<g id="bean-cloud-gate">
-</g>
-<g id="san-francisco-bridge_1_">
-</g>
-<g id="hike">
 </g>
 </svg>

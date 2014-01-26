@@ -26,6 +26,16 @@
 			<header class="left">
 				<div class="photo">
 					<?php the_post_thumbnail('people'); ?>
+
+					<?php if ( has_term('san-francisco', 'location' ) ) {?>
+
+						<img class="location-icon" src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/san-francisco-bridge.svg" alt="Bridge" />
+
+					<?php } elseif ( has_term('chicago', 'location' ) ) {?>
+
+						<img class="location-icon" src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/cloud-gate-bean.svg" alt="Bean" />
+
+					<?php } ?>
 				</div>
 
 				<h1><?php the_title(); ?></h1>
@@ -44,6 +54,12 @@
 					the_content(); 
 				?>
 			</section>
+			<footer>
+				<ul class="speaker-pagination">
+					<li class="prev"><?php previous_post('%', 'Previous Speaker: ', 'yes'); ?></li>
+					<li class="next"><?php next_post('%', 'Next Speaker: ', 'yes'); ?></li>
+				</ul>
+			</footer>
 		</div>	
 	</div>
 </article>
