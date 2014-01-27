@@ -53,6 +53,7 @@
 	require_once( 'custom-functions/post-types.php' );
 	require_once( 'custom-functions/meta_board-members.php' );
 	require_once( 'custom-functions/meta_speakers.php' );
+	require_once( 'custom-functions/meta_sponsors.php' );
 	
 	
 	// Scripts
@@ -61,7 +62,10 @@
 			wp_register_script( 'ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js', array( 'jquery' ), '', true );
 			wp_enqueue_script( 'ui' );
 
-			wp_register_script( 'g-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places', array( 'jquery' ), '', true );
+			wp_register_script( 'g-maps-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places', array( 'jquery' ), '', true );
+			wp_enqueue_script( 'g-maps-api' );
+
+			wp_register_script( 'g-maps', get_template_directory_uri().'/_assets_production/js/maps.js', array( 'jquery' ), '', true );
 			wp_enqueue_script( 'g-maps' );
 		}
 		

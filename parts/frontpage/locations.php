@@ -43,7 +43,7 @@
 
 					<?php the_content(); ?> 
 
-					<div id="sanfran-map" class="g-map">SanFran Map Goes Here</div>
+					<div id="chicago-map" class="g-map">SanFran Map Goes Here</div>
 
 					<?php
 						$myExcerpt = get_the_excerpt();

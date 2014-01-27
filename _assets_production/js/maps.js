@@ -1,4 +1,4 @@
-var map;
+	var map;
 	var sanfran = new google.maps.LatLng(37.771125, -122.401663);
 	
 	var MY_MAPTYPE_ID = 'custom_style';
@@ -49,21 +49,10 @@ var map;
   var infowindow = new google.maps.InfoWindow();
   var service = new google.maps.places.PlacesService(map);
 
-  service.getDetails(request, function(place, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      var marker = new google.maps.Marker({
-        map: map,
-        icon: 'wp-content/themes/HikeCon-Proper/_assets_production/images/pin.png',
-        position: place.geometry.location
-      });
-      google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent('<h3 style="color:#ff3d3d; margin:0; padding:0 0 .125em 0;">' + place.name + '</h3><p style="margin:0; padding:0;"><a style="color:#0192ce; text-decoration:none;"href="https://goo.gl/maps/oXVoF">View on Google Maps</a></p>' ) ;
-        infowindow.open(map, this);
-      });
-    }
+  google.maps.event.addListener(sanfran, 'click', function() {
+    infowindow.setContent('<h3 style="color:#ff3d3d; margin:0; padding:0 0 .125em 0;">Adobe Headquarters</h3><p style="margin:0; padding:0;"><a style="color:#0192ce; text-decoration:none;"href="https://goo.gl/maps/oXVoF">View on Google Maps</a></p>' ) ;
+    infowindow.open(map, this);
   });
-
-  
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

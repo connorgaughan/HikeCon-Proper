@@ -21,7 +21,7 @@ body {
   	@include transition-timing-function(ease-in-out);
 }
 body.push-left{
-	left:-200px;
+	left:-150px;
 	@include transition-property(left);
   	@include transition-duration(.875s);
   	@include transition-timing-function(ease-in-out);
@@ -100,13 +100,14 @@ nav.menu{
 	top:0;
 	background:$purple;
 	z-index:55555;
-	@include transition-property(right);
-  	@include transition-duration(.875s);
+	@include transition-property(all);
+  	@include transition-duration(.75s);
   	@include transition-timing-function(ease-in-out);
 	a{ color:$primary; }
 	ul{
 		padding:2.25em;
 		height:100%;
+		background: url(../images/icons/hike-pattern.svg) fixed;
 		li{
 			@include adjust-font-size-to(20px);
 			margin:0;
@@ -121,8 +122,8 @@ nav.menu{
 
 nav.menu.active{
 	right:0;
-	@include transition-property(right);
-  	@include transition-duration(.875s);
+	@include transition-property(all);
+  	@include transition-duration(1s);
   	@include transition-timing-function(ease-in-out);
 }
 
@@ -264,6 +265,23 @@ nav.menu.active{
 			@include adjust-font-size-to(20px); 
 			@include padding-trailer(0);
 		}
+		.photo{
+			position:relative;
+			display:inline-block;
+			margin:0 auto;
+			.location-icon{
+				display:block;
+				height:40px;
+				width:40px;
+				padding:.125em;
+				margin:0;
+				background:$primary;
+				@include border-radius(100%);
+				position:absolute;
+				bottom:20px;;
+				left:-5px;
+			}
+		}
 	}
 	.right{
 		h2{ @include adjust-font-size-to(50px); } 
@@ -306,8 +324,15 @@ nav.menu.active{
 }
 //-------------------------------------------------------------------------------------------------  Sponsors - Layout
 #sponsors{
-	.tier-one li, .tier-two li, .tier-three li{
-		@include column(12);
+	.tier-one, .tier-two, .tier-three{
+		@include padding-trailer(5);
+		li{
+			@include column(12);
+			img{
+				display:block;
+				margin:0 auto;
+			}
+		}
 	}
 }
 
@@ -344,6 +369,8 @@ nav.menu.active{
 		@include border-radius(100%);
 	}
 }
+
+.board-and-volunteers .colored{ padding:2.5em; }
 
 
 //-------------------------------------------------------------------------------------------------  Media Queries
@@ -575,21 +602,6 @@ nav.menu.active{
 			position:absolute;
 			background: url(../images/icons/squiggle-gray.svg) 0 0 no-repeat;
 			background-size:cover;
-		}
-		.photo{
-			position:relative;
-			.location-icon{
-				display:block;
-				height:40px;
-				width:40px;
-				padding:.125em;
-				margin:0;
-				background:$primary;
-				@include border-radius(100%);
-				position:absolute;
-				bottom:-5px;;
-				left:-5px;
-			}
 		}
 	}
 	.no-svg #single-speaker footer .prev:before{
