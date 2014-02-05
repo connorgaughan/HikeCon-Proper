@@ -59,12 +59,12 @@
 	// Scripts
 	function starkers_script_enqueuer() {
 		if( is_front_page() ){
-			wp_register_script( 'ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js', array( 'jquery' ), '', true );
-			wp_enqueue_script( 'ui' );
+			wp_register_script( 'g-maps-api', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array( 'jquery' ), '', true );
+			wp_enqueue_script( 'g-maps-api' );
+
+			wp_register_script( 'g-maps', get_template_directory_uri().'/_assets_production/js/maps.js', array( 'jquery' ), '', true );
+			wp_enqueue_script( 'g-maps' );
 		}
-
-
-		
 		wp_register_script( 'site', get_template_directory_uri().'/_assets_production/js/site.min.js', array( 'jquery' ), '', true );
 		wp_enqueue_script( 'site' );
 
@@ -93,12 +93,5 @@
 	add_action( 'init', 'my_add_excerpts_to_pages' );
 		function my_add_excerpts_to_pages() {
     	add_post_type_support( 'page', 'excerpt' );
-	}
-
-
-	// Add ThickBox to posts
-	add_action('init', 'init_theme_method');
-	function init_theme_method() {
-		add_thickbox();
 	}
 ?>

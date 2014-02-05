@@ -211,6 +211,8 @@ nav.menu.active{
 	.container{ overflow:visible; }
 	p{ 
 		@include padding-trailer(4); 
+		font-family:'Helvetica Neue Bold', helvetica, sans-serif;
+		a{ text-decoration:underline; }
 	} 
 	h3{ @include adjust-font-size-to(50px); @include padding-trailer(2); } 
 	.tabs{ 
@@ -331,6 +333,7 @@ nav.menu.active{
 }
 
 .ticket-info{
+	font-family:'Helvetica Neue Bold', helvetica, sans-serif;
 	@include adjust-font-size-to(13px);
 	@include padding-leader(5);
 	color:#f8ea00;
@@ -344,34 +347,6 @@ nav.menu.active{
 
 //-------------------------------------------------------------------------------------------------  Speakers
 //-------------------------------------------------------------------------------------------------  Speakers - Typography
-#speakers{
-	@extend .is-centered;
-	a{ 
-		@include adjust-font-size-to(20px); 
-		@include transition-property(all);@include transition-duration(.125s);@include transition-timing-function(ease-in-out);
-		&:hover{
-			@include transition-property(all);@include transition-duration(.125s);@include transition-timing-function(ease-in-out);
-			color:$tertiary;
-		}
-		&:after{
-			display:inline-block;
-			content:",\00a0";
-			color:$red;
-		} 
-		&:last-child:after{
-			content:"";
-		}
-	}
-	h3{ @include adjust-font-size-to(35px); color:$red; text-decoration:underline; }
-	h4{ @extend .is-uppercase; color:$purple; @include adjust-font-size-to(11px); @include padding-trailer(5); @include padding-leader(7); }
-	footer{
-		@include adjust-font-size-to(30px);
-		@include padding-trailer(4); 
-		@include padding-leader(4);
-		color: lighten($secondary, 30%);
-	}
-}
-
 #speakers-modal{
 	h3{ @include adjust-font-size-to(45px); color:$red; text-decoration:underline; @include padding-trailer(2); } 
 }
@@ -419,15 +394,14 @@ nav.menu.active{
 		h1{ 
 			@include adjust-font-size-to(50px); 
 			@include padding-trailer(0);
-			+ p{
-				@include padding-trailer(4);
-			}
 		}
-		time{ color:#222; @include padding-trailer(2); }
-		time+p{
-			@include padding-trailer(4);
+		h1+p{ @include padding-leader(6); }
+		time{ color:#222; @include padding-trailer(2); display:block;}
+		h1+time{
+			@include padding-trailer(6);
 			@include padding-leader(2);
 		}
+		p{ font-family:'Helvetica Neue Bold', helvetica, sans-serif; @include padding-trailer(4); a{ text-decoration:underline; } }
 	}
 	footer{
 		@include leader(5);
@@ -463,8 +437,8 @@ nav.menu.active{
 //-------------------------------------------------------------------------------------------------  Sponsors - Layout
 #sponsors{
 	.tier-one, .tier-two, .tier-three{
-		@include trailer(8);
 		li{
+			min-height:100px;
 			@include column(12);
 			img{
 				display:block;
@@ -474,12 +448,6 @@ nav.menu.active{
 		}
 	}
 }
-
-
-//-------------------------------------------------------------------------------------------------  Board
-//-------------------------------------------------------------------------------------------------  Board - Typography
-
-
 
 //-------------------------------------------------------------------------------------------------  People
 //-------------------------------------------------------------------------------------------------  People - Layout
@@ -501,33 +469,6 @@ nav.menu.active{
 
 	//--------------------------------------------------------------------- General
 	.container{ padding:0 30px; width:100%; }
-
-	//.home .colored{ 
-	//	&:before, &:after{ 
-	//		content:""; 
-	//		display:block; 
-	//		width:1.5em; 
-	//		height:1px; 
-	//		background:#000000; 
-	//		position:absolute; 
-	//		bottom:0; 
-	//	} 
-	//	&:before{ left:0; } 
-	//	&:after{ right:0; } 
-	//	header{
-	//		&:before, &:after{ 
-	//			content:""; 
-	//			display:block; 
-	//			width:1.5em; 
-	//			height:1px; 
-	//			background:#000000; 
-	//			position:absolute; 
-	//			top:0; 
-	//		} 
-	//		&:before{ left:0; } 
-	//		&:after{ right:0; }
-	//	}
-	//}
 
 	#home h1:before{
 		content:"";
@@ -588,9 +529,6 @@ nav.menu.active{
 	}
 	//--------------------------------------------------------------------- Home
 	#home .colored{ padding:4em; }
-
-	//--------------------------------------------------------------------- Board
-	#board footer{ @include column(10); }
 }
 
 //-------------------------------------------------------------------------------------------------  Media Queries - 32em
@@ -604,7 +542,6 @@ nav.menu.active{
 
 	//--------------------------------------------------------------------- Board
 	.people li{ @include column(6); }
-	#board footer{ @include column(7); }
 
 	//--------------------------------------------------------------------- Sponsors
 	#sponsors{
@@ -687,11 +624,6 @@ nav.menu.active{
 	}
 
 	//--------------------------------------------------------------------- Speakers
-	#speakers{
-		h3{ @include adjust-font-size-to(45px); }
-		a{ @include adjust-font-size-to(30px); }
-	}
-
 	#single-speaker{
 		.left{ @include column(4); }
 		.right{ @include column(8); }
@@ -731,11 +663,9 @@ nav.menu.active{
 		}
 		.tier-one li{
 			@include column(6);
+			min-height:150px;
 		}
 	}
-
-	//--------------------------------------------------------------------- Board
-	#board footer{ @include column(6); }
 }
 
 
@@ -749,7 +679,6 @@ nav.menu.active{
 	#why .tabs li{ padding-left:3em; }
 
 	//--------------------------------------------------------------------- Board
-	#board footer{ @include column(6); }
 	.people li{ @include column(4); }
 }
 

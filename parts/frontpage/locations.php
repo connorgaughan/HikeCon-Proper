@@ -1,9 +1,9 @@
 <section id="locations" class="scroll">
 	<div class="container">
-		<article class="colored half blue" id="sanfran">
+		<article class="colored half blue" id="sanfran" itemscope itemtype="http://schema.org/Event">
 			<?php query_posts('page_id=16');  while (have_posts ()): the_post(); ?> 
 				<header>
-					<img class="bridge" src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/san-francisco-bridge.svg" alt="HikeCon" />
+					<img class="bridge" src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/san-francisco-bridge.svg" alt="Golden Gate Bridge" />
 					<h2><?php the_title(); ?></h2> 
 				</header>
 
@@ -31,11 +31,11 @@
 			<?php wp_reset_query(); ?>
 		</article>
 
-		<article class="colored half green" id="chicago">
+		<article class="colored half green" id="chicago" itemscope itemtype="http://schema.org/Event">
 			<?php query_posts('page_id=18');  while (have_posts ()): the_post(); ?> 
 				
 				<header>
-					<img class="bean" src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/cloud-gate-bean.svg" alt="HikeCon" />
+					<img class="bean" src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/cloud-gate-bean.svg" alt="Cloud Gate Bean" />
 					<h2><?php the_title(); ?></h2>
 				</header>
 				

@@ -5,6 +5,12 @@
 @import url("//hello.myfonts.net/count/2938ba");
 @font-face {font-family: 'ITCAvantGardeStd-Bold';src: url('../webfonts/2938BA_0_0.eot');src: url('../webfonts/2938BA_0_0.eot?#iefix') format('embedded-opentype'),url('../webfonts/2938BA_0_0.woff') format('woff'),url('../webfonts/2938BA_0_0.ttf') format('truetype');}
 
+@font-face {
+  font-family: 'Helvetica Neue Bold';
+  src: local("Helvetica Neue Bold"),
+       local("HelveticaNeue-Bold");
+}
+
 
 //-------------------------------------------------------------------------------------------------  Font Sizing - 16px base
 $base-font-size						: 16px;
