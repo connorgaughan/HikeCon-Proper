@@ -10,7 +10,7 @@ $speaker_box = array(
     'priority' => 'high',
     'fields' => array(
     array(
-    	'name' => 'Talk Title',
+    	'name' => 'Website',
     	'std' =>  '',
     	'id' => $prefix . 'talk-title',
     	'type' => 'text'

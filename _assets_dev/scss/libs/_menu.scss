@@ -34,7 +34,7 @@ $button-size : 2em;
 @mixin line {
   display: inline-block;
   width: $button-size;
-  height: $button-size/7;
+  height: 5px;
   background: $red;
   @include transition-duration(.5s);
   @include transition-delay(.5s);

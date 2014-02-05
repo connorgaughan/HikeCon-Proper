@@ -7,7 +7,8 @@
 @import "libs/mixins";
 @import "libs/grid";
 @import "libs/typography"; 	
-@import "libs/forms";	
+@import "libs/modal"; 	
+@import "libs/cube.scss";
 
 //-------------------------------------------------------------------------------------------------  General Styles
 *{ outline:none; }
@@ -21,14 +22,14 @@ body {
   	@include transition-timing-function(ease-in-out);
 }
 body.push-left{
-	left:-150px;
+	left:-240px;
 	@include transition-property(left);
   	@include transition-duration(.875s);
   	@include transition-timing-function(ease-in-out);
 }
 
-.container {@extend .clearfix; margin: 0 auto; max-width: 900px; padding:0 20px; position:relative; }
-.board-and-volunteers #board .container,
+.container {@extend .clearfix; margin: 0 auto; max-width: 900px; width:100%; padding:0 20px; position:relative; }
+.about #board .container,
 .attendees #attendee-list .container,{ max-width:1200px; }
 .scroll, #locations article:first-child{ @include trailer(5); }
 img{ max-width:100%; height:auto; }
@@ -38,9 +39,52 @@ img{ max-width:100%; height:auto; }
 .blue{ background:$blue; }
 .green{ background:$green; }
 .light-green{ background:$light-green; }
-.white{ background:$primary; color:$secondary; a{ color:$red; } }
+.white{ background:$primary; color:$secondary; padding:3.5em 0; a{ color:$red; } }
 .full, .half{ @include column(12); }
 .container footer, .container header, .container .content{ @include column(12); }
+.people {
+	@extend .is-centered;
+	@include transition-property(all);
+  	@include transition-duration(.125s);
+  	@include transition-timing-function(ease-in-out);
+	img {
+		display:block;
+		height:120px;
+		max-width:120px;
+		margin:0 auto;
+		border:0px solid $primary;
+		@include trailer(2);
+		@include border-radius(100%);
+	}
+	a{
+		p, h4, img{
+			@include transition-property(all);
+  			@include transition-duration(.125s);
+  			@include transition-timing-function(ease-in-out);
+		}
+		&:hover{
+	  		p, h4{
+	  			color:$tertiary;
+	  			@include transition-property(all);
+	  			@include transition-duration(.125s);
+	  			@include transition-timing-function(ease-in-out);
+	  		}
+	  		img{
+	  			border:6px solid $red;
+	  			@include transition-property(all);
+	  			@include transition-duration(.125s);
+	  			@include transition-timing-function(ease-in-out);
+	  		}
+		}
+	}
+}
+
+.white{ 
+	h3{ @include adjust-font-size-to(45px); color:$red; text-decoration:underline; @include padding-trailer(2); } 
+	h4{ @include adjust-font-size-to(20px); color:$red; @include padding-trailer(.5); }
+	li a{ @include adjust-font-size-to(15px); padding:0; line-height:1.25em; color:$secondary; text-decoration:none; }
+	footer a{ @include adjust-font-size-to(20px); @extend .is-inline; @include leader(2); @include padding-leader(4); border-top:4px solid $red; text-decoration:none; }
+}
 
 //-------------------------------------------------------------------------------------------------  Extends
 .is-uppercase {text-transform:uppercase;}
@@ -52,9 +96,9 @@ img{ max-width:100%; height:auto; }
 //-------------------------------------------------------------------------------------------------  Header
 //-------------------------------------------------------------------------------------------------  Header - Sticky
 .sticky{
-	@include padding-leader(2);
-	@include padding-trailer(2);
-	width:100%;
+	@include padding-leader(3.5);
+	@include padding-trailer(3.5);
+	.container{ position:static; }
 	.tickets{
 		@include adjust-font-size-to(15px);
 		@extend .is-centered;
@@ -67,27 +111,34 @@ img{ max-width:100%; height:auto; }
 		a{
 			text-decoration:none;
 			color:$red;
+			border-bottom:2px solid transparent;
+			@include transition-property(all);@include transition-duration(.125s);@include transition-timing-function(ease-in-out);
+			&:hover{
+				@include transition-property(all);@include transition-duration(.125s);@include transition-timing-function(ease-in-out);
+				border-bottom:2px solid $red;
+			}
 		}
 		.fade-out{
 			display:none;
 		}
 		img{
 			display:block;
-			width:35%;
+			width:60px;
 			margin:0 auto;
 		}
 		.get-tickets{
 			vertical-align:bottom;
 		}
 	}
-	.hamburger{
-		color:$red;
-		position:fixed;
-		right:0px;
-		top:30px;
-		z-index:99999;
-	}
 }	
+
+.hamburger{
+	color:$red;
+	position:fixed;
+	right:0px;
+	top:30px;
+	z-index:99999;
+}
 
 @import "libs/menu";
 
@@ -103,20 +154,23 @@ nav.menu{
 	@include transition-property(all);
   	@include transition-duration(.75s);
   	@include transition-timing-function(ease-in-out);
-	a{ color:$primary; }
+	a{ color:$primary; @include transition-property(color);@include transition-duration(.125s);@include transition-timing-function(ease-in-out); &:hover{ color:$tertiary; }}
 	ul{
-		padding:2.25em;
+		padding:1.25em 2.25em 2.25em 2.25em;
 		height:100%;
 		background: url(../images/icons/hike-pattern.svg) fixed;
 		li{
 			@include adjust-font-size-to(20px);
 			margin:0;
-			padding:0 0 .125em 0;
-			a{ text-decoration:none; }
+			padding:0 0 1em 0;
+			a{ text-decoration:none; &:hover{ color:#f8ea00; }}
 		}
 		li.break{
 			@include padding-trailer(3);
 		}
+	}
+	.logo{
+		padding:3em 7.25em 0 2.25em;
 	}
 }
 
@@ -155,14 +209,70 @@ nav.menu.active{
 	@include trailer(5);
 	overflow:hidden;
 	.container{ overflow:visible; }
-	p{ @include padding-trailer(4); } 
+	p{ 
+		@include padding-trailer(4); 
+	} 
 	h3{ @include adjust-font-size-to(50px); @include padding-trailer(2); } 
 	.tabs{ 
 		display:block; 
 		@include padding-trailer(3); 
-		.ui-tabs-active a{
-			color:$red;
-			text-decoration:underline;
+		a{
+			border-bottom:2px solid transparent;
+			@include transition-property(all);@include transition-duration(.125s);@include transition-timing-function(ease-in-out);
+			&:hover{
+				@include transition-property(all);@include transition-duration(.125s);@include transition-timing-function(ease-in-out);
+				color:$primary;
+				border-bottom:2px solid $primary;
+			}
+		}
+	}
+	.tabs a.active{
+		color:#f8ea00;
+		border-bottom:2px solid #f8ea00;
+	}
+	.content ul li{
+		#go p{
+			display:inline-block;
+			padding-bottom:4em;
+			border-bottom:0px solid $purple;
+		}
+		h3{ 
+			position:relative;
+			bottom:-100px; 
+			@include opacity(0);
+			@include transition-property(all);
+  			@include transition-duration(.5s);
+  			@include transition-timing-function(ease-in-out);
+		}
+		p{
+			position:relative;
+			bottom:-200px;
+			@include opacity(0);
+			@include transition-property(all);
+  			@include transition-duration(.5s);
+  			@include transition-timing-function(ease-in-out);
+		}
+	}
+	.content ul li.active-slide{
+		#go p{
+			padding-bottom:.125em;
+			border-bottom:4px solid #f8ea00;
+		}
+		h3{ 
+			position:relative;
+			bottom:0; 
+			@include opacity(1);
+			@include transition-property(all);
+  			@include transition-duration(.5s);
+  			@include transition-timing-function(ease-in-out);
+		}
+		p{
+			position:relative;
+			bottom:0;
+			@include opacity(1);
+			@include transition-property(all);
+  			@include transition-duration(.5s);
+  			@include transition-timing-function(ease-in-out);
 		}
 	}
 }
@@ -177,6 +287,13 @@ nav.menu.active{
 	margin:0 auto; 
 	overflow:hidden;
 	.container{ overflow:visible; }
+	.blue, .green{ 
+		background:url(../images/icons/top.svg) center 0 no-repeat, url(../images/icons/bottom.svg) bottom center no-repeat ;
+		background-size:contain;
+	}
+	.blue{ background-color:$blue; }
+	.green{ background-color:$green; }
+	.half.colored{ padding-bottom:5.5em; }
 	h2{ z-index:1000; @include adjust-font-size-to(45px); @include padding-trailer(2); } 
 }
 .blue, .green{ h3{ @include adjust-font-size-to(20px); } }
@@ -204,6 +321,13 @@ nav.menu.active{
 	padding:.875em 0;
 	border:8px solid $primary;
 	color:$primary;
+	@include transition-property(all);@include transition-duration(.125s);@include transition-timing-function(ease-in-out);
+	&:hover{
+		@include transition-property(all);@include transition-duration(.125s);@include transition-timing-function(ease-in-out);
+		border:8px solid $primary;
+		background:$primary;
+		color:$red;
+	}
 }
 
 .ticket-info{
@@ -224,8 +348,13 @@ nav.menu.active{
 	@extend .is-centered;
 	a{ 
 		@include adjust-font-size-to(20px); 
+		@include transition-property(all);@include transition-duration(.125s);@include transition-timing-function(ease-in-out);
+		&:hover{
+			@include transition-property(all);@include transition-duration(.125s);@include transition-timing-function(ease-in-out);
+			color:$tertiary;
+		}
 		&:after{
-			@extend .is-inline;
+			display:inline-block;
 			content:",\00a0";
 			color:$red;
 		} 
@@ -235,13 +364,20 @@ nav.menu.active{
 	}
 	h3{ @include adjust-font-size-to(35px); color:$red; text-decoration:underline; }
 	h4{ @extend .is-uppercase; color:$purple; @include adjust-font-size-to(11px); @include padding-trailer(5); @include padding-leader(7); }
+	footer{
+		@include adjust-font-size-to(30px);
+		@include padding-trailer(4); 
+		@include padding-leader(4);
+		color: lighten($secondary, 30%);
+	}
+}
+
+#speakers-modal{
+	h3{ @include adjust-font-size-to(45px); color:$red; text-decoration:underline; @include padding-trailer(2); } 
 }
 
 //-------------------------------------------------------------------------------------------------  Speakers - Single
 #single-speaker{
-	.colored{
-		padding-bottom:2em;
-	}
 	.left, .right{ @include column(12); }
 	.left{
 		@extend .is-centered;
@@ -255,15 +391,11 @@ nav.menu.active{
 		}
 		img{
 			display:block;
-			height:120px;
-			max-width:120px;
+			height:150px;
+			max-width:150px;
 			margin:0 auto;
 			@include trailer(4);
 			@include border-radius(100%);
-		}
-		h1{ 
-			@include adjust-font-size-to(20px); 
-			@include padding-trailer(0);
 		}
 		.photo{
 			position:relative;
@@ -284,7 +416,13 @@ nav.menu.active{
 		}
 	}
 	.right{
-		h2{ @include adjust-font-size-to(50px); } 
+		h1{ 
+			@include adjust-font-size-to(50px); 
+			@include padding-trailer(0);
+			+ p{
+				@include padding-trailer(4);
+			}
+		}
 		time{ color:#222; @include padding-trailer(2); }
 		time+p{
 			@include padding-trailer(4);
@@ -303,7 +441,7 @@ nav.menu.active{
 
 
 //-------------------------------------------------------------------------------------------------  Speakers - Layout
-#locations+#speakers{ @include leader(5); }
+#locations+#speakers-modal{ @include leader(5); }
 
 
 //-------------------------------------------------------------------------------------------------  Sponsors
@@ -325,12 +463,13 @@ nav.menu.active{
 //-------------------------------------------------------------------------------------------------  Sponsors - Layout
 #sponsors{
 	.tier-one, .tier-two, .tier-three{
-		@include padding-trailer(5);
+		@include trailer(8);
 		li{
 			@include column(12);
 			img{
 				display:block;
-				margin:0 auto;
+				margin:10% auto;
+				width:80%;
 			}
 		}
 	}
@@ -339,12 +478,7 @@ nav.menu.active{
 
 //-------------------------------------------------------------------------------------------------  Board
 //-------------------------------------------------------------------------------------------------  Board - Typography
-#board{ 
-	h3{ @include adjust-font-size-to(45px); color:$red; text-decoration:underline; @include padding-trailer(2); } 
-	h4{ @include adjust-font-size-to(20px); color:$red; @include padding-trailer(.5); }
-	li a{ @include adjust-font-size-to(15px); padding:0; line-height:1.25em; color:$secondary; text-decoration:none; }
-	footer a{ @include adjust-font-size-to(20px); @extend .is-inline; @include leader(2); @include padding-leader(4); border-top:4px solid $red; text-decoration:none; }
-}
+
 
 
 //-------------------------------------------------------------------------------------------------  People
@@ -358,18 +492,6 @@ nav.menu.active{
 
 //-------------------------------------------------------------------------------------------------  People - Single Page
 //-------------------------------------------------------------------------------------------------  People - Single Page - Layout
-.board-and-volunteers .people, .attendees .people{ 
-	@extend .is-centered; 
-	img{
-		display:block;
-		height:120px;
-		max-width:120px;
-		margin:0 auto;
-		@include trailer(2);
-		@include border-radius(100%);
-	}
-}
-
 .board-and-volunteers .colored{ padding:2.5em; }
 
 
@@ -378,34 +500,34 @@ nav.menu.active{
 @media screen and (min-width: 24em){
 
 	//--------------------------------------------------------------------- General
-	.container{ padding:0 30px; }
+	.container{ padding:0 30px; width:100%; }
 
-	.home .colored{ 
-		&:before, &:after{ 
-			content:""; 
-			display:block; 
-			width:1.5em; 
-			height:1px; 
-			background:#000000; 
-			position:absolute; 
-			bottom:0; 
-		} 
-		&:before{ left:0; } 
-		&:after{ right:0; } 
-		header{
-			&:before, &:after{ 
-				content:""; 
-				display:block; 
-				width:1.5em; 
-				height:1px; 
-				background:#000000; 
-				position:absolute; 
-				top:0; 
-			} 
-			&:before{ left:0; } 
-			&:after{ right:0; }
-		}
-	}
+	//.home .colored{ 
+	//	&:before, &:after{ 
+	//		content:""; 
+	//		display:block; 
+	//		width:1.5em; 
+	//		height:1px; 
+	//		background:#000000; 
+	//		position:absolute; 
+	//		bottom:0; 
+	//	} 
+	//	&:before{ left:0; } 
+	//	&:after{ right:0; } 
+	//	header{
+	//		&:before, &:after{ 
+	//			content:""; 
+	//			display:block; 
+	//			width:1.5em; 
+	//			height:1px; 
+	//			background:#000000; 
+	//			position:absolute; 
+	//			top:0; 
+	//		} 
+	//		&:before{ left:0; } 
+	//		&:after{ right:0; }
+	//	}
+	//}
 
 	#home h1:before{
 		content:"";
@@ -489,9 +611,6 @@ nav.menu.active{
 		.tier-one li{
 			@include column(6);
 		}
-		.tier-two li, .tier-three li{
-			@include column(4);
-		}
 	}
 }
 
@@ -515,7 +634,7 @@ nav.menu.active{
 	.sticky .tickets{
 		img{
 			display:block;
-			width:15%;
+			width:75px;
 			margin:0 auto .5em auto;
 		}
 	}
@@ -550,11 +669,6 @@ nav.menu.active{
 	//--------------------------------------------------------------------- Locations
 	#locations{.green h2{ @include padding-trailer(5); } article:first-child{ @include trailer(0); } }
 
-	.green{
-		padding-bottom:30%;
-		margin-bottom:-30%;
-	}
-
 	.button{ width:70%; }
 
 	.bridge{
@@ -566,7 +680,7 @@ nav.menu.active{
 
 	.bean{
 		position:absolute;
-		top:3em;
+		top:4em;
 		right:-20px;
 		width:25%;
 		z-index:10;
@@ -616,13 +730,7 @@ nav.menu.active{
 			@include adjust-font-size-to(45px); 
 		}
 		.tier-one li{
-			@include column(4);
-		}
-		.tier-two li{
-			@include column(3);
-		}
-		.tier-three li{
-			@include column(2);
+			@include column(6);
 		}
 	}
 
@@ -641,7 +749,7 @@ nav.menu.active{
 	#why .tabs li{ padding-left:3em; }
 
 	//--------------------------------------------------------------------- Board
-	#board footer{ @include column(4); }
+	#board footer{ @include column(6); }
 	.people li{ @include column(4); }
 }
 
@@ -650,7 +758,10 @@ nav.menu.active{
 @media screen and (min-width: 64em){
 
 	//--------------------------------------------------------------------- Board
-	.people li{ @include column(3); @include padding-trailer(10); }
+	.people li{ @include padding-trailer(10); }
+
+	//--------------------------------------------------------------------- Sponsors
+	#sponsors .tier-one li{ @include column(4); }
 }
 
 

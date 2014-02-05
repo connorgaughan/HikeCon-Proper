@@ -15,4 +15,6 @@ $round-to-nearest-half-line			: false;
 body{@include adjust-font-size-to($base-font-size, 4); color:$primary;  font-family: 'ITCAvantGardeStd-Bold', helvetica, arial, sans-serif; -webkit-font-smoothing: antialiased; }
 .colored a{ color:$primary; text-decoration:none; }
 .white a{ color:$red; text-decoration:underline; }
+a{ @include transition-property(color);@include transition-duration(.125s);@include transition-timing-function(ease-in-out); }
+a:hover{ color:$tertiary; @include transition-property(color);@include transition-duration(.125s);@include transition-timing-function(ease-in-out); }
 ul li{ list-style-type:none; }

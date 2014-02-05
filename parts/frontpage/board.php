@@ -6,28 +6,42 @@
 
 		<div class="content">
 			<ul class="people">
-			<?php query_posts(array('post_type' => 'member', 'level' => 'board-member'));  while (have_posts ()): the_post(); ?> 
+				<?php query_posts(array('post_type' => 'member', 'level' => 'board-member'));  while (have_posts ()): the_post(); ?> 
 					
-				<?php
-					$position = get_post_meta($post->ID, 'dbt_position', true);
-					$twitterHandle = get_post_meta($post->ID, 'dbt_twitter', true);
-					$tags = '@';
-					$twitter = str_replace($tags, "", $twitterHandle);
-				?>
-
-				<li>
 					<?php
-						echo	'<h4>';
-									the_title();
-						echo 	'</h4>';
-						echo 	'<p><a href="https://twitter.com/' . $twitter . '" target="blank">' . $twitterHandle . '</a></p>';
-						echo 	'<p>' . $position . '</p>';
+						$position = get_post_meta($post->ID, 'dbt_position', true);
+						$twitterHandle = get_post_meta($post->ID, 'dbt_twitter', true);
+						$tags = '@';
+						$twitter = str_replace($tags, "", $twitterHandle);
 					?>
-				</li>
+
+					<li>
+						<?php
+							if($twitterHandle){
+								echo '	<a href="https://twitter.com/' . $twitter . '" target="blank">';
+								echo		the_post_thumbnail('people');
+								echo		'<h4>'; the_title(); echo '</h4>';
+							if($position){
+								echo 		'<p>' . $position . '</p>';
+							}
+								echo 		'<p>' . $twitterHandle . '</p>';
+								echo ' 	</a></p>';
+
+							} else {
+
+								echo		the_post_thumbnail('people');
+								echo		'<h4>' . the_title() . '</h4>';
+							if($position){
+								echo 		'<p>' . $position . '</p>';
+							}
+								echo 		'<p>' . $twitterHandle . '</p>';
+							}
+						?>	
+					</li>
 								
-			<?php endwhile; ?>
-			</ul>
-			<?php wp_reset_query(); ?>
+				<?php endwhile; ?>
+				</ul>
+				<?php wp_reset_query(); ?>
 		</div>
 
 		<footer>

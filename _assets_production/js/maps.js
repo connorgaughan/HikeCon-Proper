@@ -1,58 +1,53 @@
-	var map;
-	var sanfran = new google.maps.LatLng(37.771125, -122.401663);
-	
-	var MY_MAPTYPE_ID = 'custom_style';
-	
-	function initialize() {
-	
-	var featureOpts = [
-		{
-			stylers: [
-	        	{ hue: '#0192ce' },
-				{ gamma: 0.5 },
-				{ weight: 0.5 }
-			]
-	    },
-	    {
-	    	featureType: 'water',
-	    	stylers: [
-	        	{ color: '#0192ce' }
-			]
-	    }
-	];
-	
-	var mapOptions = {
-    	zoom: 15,
-		center: sanfran,
-		disableDefaultUI: true,
-		mapTypeControlOptions: {
-			mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
-		},
-		mapTypeId: MY_MAPTYPE_ID
-	};
+var map_sf;
+var sanfran = new google.maps.LatLng(37.771125, -122.401663);
+var chicago = new google.maps.LatLng(40.6743890, -73.9455);
+ 
+var MY_MAPTYPE_ID = 'custom_style';
+ 
+function initialize() {
+ 
+  var featureOpts_sf = [{stylers: [{ hue: '#0192ce' }, { gamma: 0.5 }, { weight: 0.5 } ]},{featureType: 'water', stylers: [ { color: '#0192ce' } ]];
 
-  map = new google.maps.Map(document.getElementById('sanfran-map'),
-      mapOptions);
-
-  var styledMapOptions = {
+  var featureOpts_chi = [{stylers: [{ hue: '#0192ce' }, { gamma: 0.5 }, { weight: 0.5 } ]},{featureType: 'water', stylers: [ { color: '#0192ce' } ]];
+  
+  var mapOptions_sf = {
+    zoom: 12,
+    center: sanfran,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+    },
+    mapTypeId: MY_MAPTYPE_ID
+  };
+ 
+  var mapOptions_chi = {
+    zoom: 12,
+    center: chicago,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+    },
+    mapTypeId: MY_MAPTYPE_ID
+  };
+ 
+  map_sf = new google.maps.Map(document.getElementById('sanfran-map'),
+      mapOptions_sf);
+ 
+  map_chi = new google.maps.Map(document.getElementById('chi-map'),
+      mapOptions_chi);
+ 
+  var styledMapOptions_sf = {
     name: 'Custom Style'
   };
-
-  var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
-
-  map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
-  
-  var request = {
-    reference: 'CoQBfQAAADRczvjEVpG_c6YDhklJqkDdagoyyW0V2ZLwFJ3ZBdzZo-WeAs0OlqDSq-pLpDYiJJVqMBH-hUb9QUbhXooNMDl-zB8JQbsz9eGg3OF8dTBXntAbccw07IG9Jy270WLe95IADdEiLb8SAA9EhXx7KvXumiCbrU32BdcobS_hfzkFEhCidWwYfJ-xvfOoRp0JcCZ7GhS74FEdEVuxxb4Gb9TsKgKn-jjJ6Q'
+ 
+  var styledMapOptions_chi = {
+    name: 'Custom Style'
   };
-
-  var infowindow = new google.maps.InfoWindow();
-  var service = new google.maps.places.PlacesService(map);
-
-  google.maps.event.addListener(sanfran, 'click', function() {
-    infowindow.setContent('<h3 style="color:#ff3d3d; margin:0; padding:0 0 .125em 0;">Adobe Headquarters</h3><p style="margin:0; padding:0;"><a style="color:#0192ce; text-decoration:none;"href="https://goo.gl/maps/oXVoF">View on Google Maps</a></p>' ) ;
-    infowindow.open(map, this);
-  });
+ 
+  var customMapType_sf = new google.maps.StyledMapType(featureOpts_sf, styledMapOptions_sf);
+  var customMapType_chi = new google.maps.StyledMapType(featureOpts_chi, styledMapOptions_chi);
+ 
+  map_sf.mapTypes.set(MY_MAPTYPE_ID, customMapType_sf);
+ 
+  map_chi.mapTypes.set(MY_MAPTYPE_ID, customMapType_chi);
 }
-
+ 
 google.maps.event.addDomListener(window, 'load', initialize);
