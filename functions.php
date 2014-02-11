@@ -12,17 +12,6 @@
 	remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 
 
-	// add google analytics to footer
-	function add_google_analytics() {
-		echo '<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>';
-		echo '<script type="text/javascript">';
-		echo 'var pageTracker = _gat._getTracker("UA-XXXXX-X");';
-		echo 'pageTracker._trackPageview();';
-		echo '</script>';
-	}
-	add_action('wp_footer', 'add_google_analytics');
-
-
 	// Require External Files
 	require_once( 'external/starkers-utilities.php' );
 
@@ -54,6 +43,7 @@
 	require_once( 'custom-functions/meta_board-members.php' );
 	require_once( 'custom-functions/meta_speakers.php' );
 	require_once( 'custom-functions/meta_sponsors.php' );
+	require_once( 'custom-functions/volunteer-form.php' );
 	
 	
 	// Scripts
@@ -94,4 +84,30 @@
 		function my_add_excerpts_to_pages() {
     	add_post_type_support( 'page', 'excerpt' );
 	}
+
+
+	// Add Volunteers Output
+	function volunteers(){
+        add_menu_page('Volunteers Data','Volunteers Data','create_users','chc-volunteers','volunteers_admin','dashicons-category',21);
+    }
+    add_action('admin_menu', 'volunteers');
+
+    function volunteers_admin(){
+        
+        $location = $_SERVER['DOCUMENT_ROOT'];
+ 
+        include ($location . '/hikecon/wp-config.php');
+        include ($location . '/hikecon/wp-load.php');
+        include ($location . '/hikecon/wp-includes/pluggable.php');
+        global $wpdb;
+ 
+        $form_results = $wpdb->get_results( " SELECT * FROM volunteers" );
+
+        echo '
+            <div class="wrap">
+                <h2>Volunteers Data</h2>
+                <p>' . $form_results->last . '</p>
+            </div>
+        ';
+    }
 ?>

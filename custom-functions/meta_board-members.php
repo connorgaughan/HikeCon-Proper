@@ -16,6 +16,18 @@ $meta_box = array(
     	'type' => 'text'
     ),
     array(
+        'name' => 'Company Name',
+        'std' =>  '',
+        'id' => $prefix . 'company',
+        'type' => 'text'
+    ),
+    array(
+        'name' => 'Company Website',
+        'std' =>  '',
+        'id' => $prefix . 'website',
+        'type' => 'text'
+    ),
+    array(
     	'name' => 'Twitter Handle',
     	'std' =>  '@',
     	'id' => $prefix . 'twitter',

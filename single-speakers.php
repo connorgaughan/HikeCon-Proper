@@ -15,7 +15,12 @@
 
 <article id="single-speaker">
 	<div class="container">
+	<?php } if ( has_term('chicago', 'location' ) ) {?>
+		<div class="colored full yellow">
+	<?php }else{ ?>
 		<div class="colored full red">
+	<?php } ?>
+		
 			<?php
 				$title = get_post_meta($post->ID, 'dbt_talk-title', true);
 				$time = get_post_meta($post->ID, 'dbt_talk-details', true);

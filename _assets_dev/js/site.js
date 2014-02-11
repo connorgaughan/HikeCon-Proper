@@ -13,6 +13,7 @@ jQuery(document).ready(function($) {
 		speed: 					750,
 		adaptiveHeightSpeed: 	1000,
 		useCSS: 				true,
+		touchEnabled: 			false,
 		controls: 				false,
 		onSlideAfter: function (currentSlideNumber, totalSlideQty, currentSlideHtmlObject) {
 		    console.log(currentSlideHtmlObject);

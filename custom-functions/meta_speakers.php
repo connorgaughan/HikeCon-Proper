@@ -10,16 +10,22 @@ $speaker_box = array(
     'priority' => 'high',
     'fields' => array(
     array(
-    	'name' => 'Website',
-    	'std' =>  '',
-    	'id' => $prefix . 'talk-title',
-    	'type' => 'text'
-    ),
-    array(
     	'name' => 'Talk Time & Date',
     	'std' =>  '',
     	'id' => $prefix . 'talk-details',
     	'type' => 'text'
+    ),
+    array(
+        'name' => 'Company Name',
+        'std' =>  '',
+        'id' => $prefix . 'talk-company',
+        'type' => 'text'
+    ),
+    array(
+        'name' => 'Company Website',
+        'std' =>  '',
+        'id' => $prefix . 'talk-website',
+        'type' => 'text'
     ),
     array(
         'name' => 'Twitter Handle',

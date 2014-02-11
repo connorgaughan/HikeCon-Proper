@@ -129,7 +129,7 @@ add_action('init', 'member_register');
         'capability_type'       => 'post',
         'hierarchical'          => false,
         'menu_position'         => null,
-        'supports'              => array('title','thumbnail'),
+        'supports'              => array('title','thumbnail','editor'),
     );
     register_post_type( 'member' , $args );
 }  

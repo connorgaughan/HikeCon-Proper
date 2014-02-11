@@ -6,13 +6,19 @@ Template Name: Speakers
 
 <?php query_posts(array( 'post_type' => 'speakers',  'p' => $_GET['pid']) );  while (have_posts ()): the_post(); ?> 
 	<article id="single-speaker" class="container">
+	<?php if ( has_term('san-francisco', 'location' ) ) {?>
 		<div class="colored full red">
+	<?php } elseif ( has_term('chicago', 'location' ) ) {?>
+		<div class="colored full yellow">
+	<?php } ?>
 			<?php
-				$title = get_post_meta($post->ID, 'dbt_talk-title', true);
+				$company = get_post_meta($post->ID, 'dbt_talk-company', true);
+				$website = get_post_meta($post->ID, 'dbt_talk-website', true);
 				$time = get_post_meta($post->ID, 'dbt_talk-details', true);
 				$twitterHandle = get_post_meta($post->ID, 'dbt_talk-twitter', true);
 				$tags = '@';
 				$twitter = str_replace($tags, "", $twitterHandle);
+				$url = preg_replace('#^https?://#', '', rtrim($website,'/'));
 			?>
 			<header class="left">
 				<div class="photo">
@@ -33,8 +39,10 @@ Template Name: Speakers
 					if( $twitterHandle ){
 						echo '<p><a href="https://twitter.com/' . $twitter . '" target="blank">' . $twitterHandle . '</a></p>';
 					}
-					if( $title ){
-						echo '<p><a href="http://' . $title . '">' . $title . '</a></p>';
+					if( $website ){
+						echo '<p><a href="http://' . $url . '">' . $company . '</a></p>';
+					} else {
+
 					}
 				?>
 			</header>
