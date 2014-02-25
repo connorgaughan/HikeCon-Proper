@@ -29,7 +29,7 @@ $speaker_box = array(
     ),
     array(
         'name' => 'Twitter Handle',
-        'std' =>  '@',
+        'std' =>  '',
         'id' => $prefix . 'talk-twitter',
         'type' => 'text'
     ))

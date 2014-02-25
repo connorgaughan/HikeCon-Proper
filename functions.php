@@ -20,6 +20,11 @@
 	add_theme_support('post-thumbnails');
 	add_image_size( 'people', 200, 200 );
 
+	add_filter( 'wp_mail_content_type', 'set_content_type' );
+	function set_content_type( $content_type ){
+		return 'text/html';
+	}
+
 
 	// Add SVG Upload Support
 	function cc_mime_types( $mimes ){
