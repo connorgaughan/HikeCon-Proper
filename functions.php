@@ -48,6 +48,7 @@
 	require_once( 'custom-functions/meta_board-members.php' );
 	require_once( 'custom-functions/meta_speakers.php' );
 	require_once( 'custom-functions/meta_sponsors.php' );
+	require_once( 'custom-functions/sponsor-form.php' );
 	require_once( 'custom-functions/volunteer-form.php' );
 	
 	
@@ -90,29 +91,122 @@
     	add_post_type_support( 'page', 'excerpt' );
 	}
 
+	//Admin Colors
+	function custom_colors() {
+		echo '
+			<style type="text/css">
+				.the-list-custom tr:nth-child(odd){background:#f9f9f9;}
+			</style>
+		';
+	}
+
+	add_action('admin_head', 'custom_colors');
+
 
 	// Add Volunteers Output
 	function volunteers(){
-        add_menu_page('Volunteers Data','Volunteers Data','create_users','chc-volunteers','volunteers_admin','dashicons-category',21);
+        add_menu_page('Volunteers Data','Volunteers Data','edit_pages','chc-volunteer','volunteer_admin','dashicons-category',74);
     }
     add_action('admin_menu', 'volunteers');
 
-    function volunteers_admin(){
+    function volunteer_admin(){
         
         $location = $_SERVER['DOCUMENT_ROOT'];
  
-        include ($location . '/hikecon/wp-config.php');
-        include ($location . '/hikecon/wp-load.php');
-        include ($location . '/hikecon/wp-includes/pluggable.php');
-        global $wpdb;
+		include ($location . '/wp-config.php');
+		include ($location . '/wp-load.php');
+		include ($location . '/wp-includes/pluggable.php');
+		global $wpdb;
  
-        $form_results = $wpdb->get_results( " SELECT * FROM volunteers" );
-
-        echo '
-            <div class="wrap">
+		$form_results = $wpdb->get_results( " SELECT * FROM volunteers " );
+ 
+		echo '
+			<div class="wrap">
                 <h2>Volunteers Data</h2>
-                <p>' . $form_results->last . '</p>
-            </div>
-        ';
+				<table class="wp-list-table widefat fixed posts" cellpadding="0" cellspacing="0" border="0">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Location</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Email</th>
+							<th>Timestamp</th>
+						</tr>
+					</thead>
+					<tbody class="the-list-custom">
+		';
+ 
+		foreach ($form_results as $form_results) {
+		
+			echo '
+						<tr>
+							<td>' .$form_results->id . '</td>
+							<td>' .$form_results->location . '</td>
+							<td>' .$form_results->first . '</td>
+							<td>' .$form_results->last . '</td>
+							<td>' .$form_results->email . '</td>
+							<td>' .$form_results->timestamp . '</td>
+						</tr>
+			';
+ 		}
+
+ 		echo '</tbody></tr></table></div>';
     }
+
+    // Add Volunteers Output
+	function sponsors(){
+        add_menu_page('Sponsors Data','Sponsors Data','edit_pages','chc-sponsor','sponsor_admin','dashicons-category',75);
+    }
+    add_action('admin_menu', 'sponsors');
+
+    function sponsor_admin(){
+        
+        $location = $_SERVER['DOCUMENT_ROOT'];
+ 
+		include ($location . '/wp-config.php');
+		include ($location . '/wp-load.php');
+		include ($location . '/wp-includes/pluggable.php');
+		global $wpdb;
+ 
+		$form_results = $wpdb->get_results( " SELECT * FROM sponsors " );
+ 
+		echo '
+			<div class="wrap">
+                <h2>Sponsors Data</h2>
+				<table class="wp-list-table widefat fixed posts" cellpadding="0" cellspacing="0" border="0">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Location</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Company</th>
+							<th>Sponsor Type</th>
+							<th>Timestamp</th>
+						</tr>
+					</thead>
+		';
+ 
+		foreach ($form_results as $form_results) {
+		
+			echo '
+						<tr>
+							<td>' .$form_results->id . '</td>
+							<td>' .$form_results->location . '</td>
+							<td>' .$form_results->first . '</td>
+							<td>' .$form_results->last . '</td>
+							<td>' .$form_results->email . '</td>
+							<td>' .$form_results->phone . '</td>
+							<td>' .$form_results->company . '</td>
+							<td>' .$form_results->tier . '</td>
+							<td>' .$form_results->timestamp . '</td>
+						</tr>
+			';
+ 		}
+
+ 		echo '</tr></table></div>';
+ 	}
 ?>

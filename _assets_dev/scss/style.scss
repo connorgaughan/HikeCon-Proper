@@ -505,6 +505,9 @@ nav.menu.active{
 	}
 }
 
+.current-sponsors li{ @include column(12); @include opacity(.5); }
+.no-opacity .current-sponsors li{ @include opacity(1);}
+
 //-------------------------------------------------------------------------------------------------  People
 //-------------------------------------------------------------------------------------------------  People - Layout
 .people{
@@ -607,6 +610,7 @@ nav.menu.active{
 			li { @include column(6); }
 		}
 	}
+	.current-sponsors li{ @include column(6); }
 }
 
 //-------------------------------------------------------------------------------------------------  Media Queries - 40em

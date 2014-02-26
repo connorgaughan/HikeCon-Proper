@@ -169,19 +169,33 @@
 			</div>
 		</div>
 	</section>
-
 <?php elseif(is_page('volunteer')) : ?>
 	<section class="single">
 		<div class="container">
 			<div class="colored full white">
 				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+				<header>
+					<h1><?php the_title(); ?></h1>
+				</header>
 				<?php volunteer_form(); ?>
 				<?php endwhile; ?>
 			</div>
 		</div>
 	</section>
+<?php elseif(is_page('sponsor')) : ?>
+	<section class="single">
+		<div class="container">
+			<div class="colored full white">
+				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+				<header>
+					<h1><?php the_title(); ?></h1>
+				</header>
+				<?php sponsor_form(); ?>
+				<?php endwhile; ?>
+			</div>
+		</div>
+	</section>
 <?php else : ?>
-
 	<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 	<h2><?php the_title(); ?></h2>
 	<?php the_content(); ?>
