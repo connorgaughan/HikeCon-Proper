@@ -196,11 +196,20 @@
 		</div>
 	</section>
 <?php else : ?>
-	<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-	<h2><?php the_title(); ?></h2>
-	<?php the_content(); ?>
-	<?php comments_template( '', true ); ?>
-	<?php endwhile; ?>
+	<section class="single">
+		<div class="container">
+			<div class="colored full white">
+				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+				<header>
+					<h1><?php the_title(); ?></h1>
+				</header>
+				<div class="content schedule">
+					<?php the_content(); ?>
+				</div>
+				<?php endwhile; ?>
+			</div>
+		</div>
+	</section>
 
 <?php endif; ?>
 

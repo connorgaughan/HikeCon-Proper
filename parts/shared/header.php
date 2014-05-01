@@ -15,7 +15,8 @@
 			<div class="sanfran tickets">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/san-francisco-bridge-gray.svg" alt="Bridge" />
 				<p class="fade-out"><span class="red">San Francisco</span> @ Adobe &mdash;<br />April 5, 2014</p>
-				<p class="get-tickets"><a href="#">Get Tickets</a></p>
+				<p class="fade-out"><span class="red">San Francisco</span> @ Adobe &mdash;<br />April 5, 2014</p>
+				<p class="get-tickets">Sold Out</p>
 			</div>
 			<div class="chi tickets">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_assets_production/images/icons/cloud-gate-bean-gray.svg" alt="Bean" />

@@ -103,6 +103,41 @@
 	add_action('admin_head', 'custom_colors');
 
 
+	// Add Shortcodes
+	function simple_table( $atts ) {
+	    extract( shortcode_atts( array(
+	        'time' => '',
+	        'event' => '',
+	        'location' => '',
+	        'location_link' => '',
+	        'details' => '',
+	    ), $atts ) );
+	    $time = $time;
+	    $event = $event;
+	    $location = $location;
+	    $location_link = $location_link;
+	    $details = $details;
+
+	    $output .= '<div class="row">';
+	    $output .= '<div class="schedule-time time">'.$time.'</div>';
+	    $output .= '<div class="schedule-location">
+	    				<p class="no-padding event">'.$event.'</p>';				
+	    if($details){
+	    	$output .= '<p class="details no-padding">'.$details.'</p>';
+	    }
+	    if($location){
+	    	if($location_link){
+	    		$output .= '<p class="no-padding is-uppercase details"><span class="location"></span><a href="'.$location_link.'">'.$location.'</a></p>';
+	    	}else{
+	    		$output .= '<p class="no-padding is-uppercase details"><span class="location"></span>'.$location.'</p>';
+	    	}
+	    }				
+	    $output .= '</div></div>';
+	    return $output;
+	}
+	add_shortcode( 'row', 'simple_table' );
+
+
 	// Add Volunteers Output
 	function volunteers(){
         add_menu_page('Volunteers Data','Volunteers Data','edit_pages','chc-volunteer','volunteer_admin','dashicons-category',74);

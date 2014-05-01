@@ -18,7 +18,7 @@
 						$myExcerpt = str_replace($tags, "", $myExcerpt);
 					?>
 
-					<a class="button tickets" href="<?php echo $myExcerpt; ?>" target="blank">Buy Tickets</a>
+					<p class="button tickets sold-out">Sold Out</p>
 				</div>
 
 				<div class="ticket-info">

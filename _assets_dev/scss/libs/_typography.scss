@@ -11,6 +11,11 @@
        local("HelveticaNeue-Bold");
 }
 
+@font-face {
+  font-family: 'Helvetica Neue Light';
+  src: local("Helvetica Neue Light"),
+       local("HelveticaNeue-Light");
+}
 
 //-------------------------------------------------------------------------------------------------  Font Sizing - 16px base
 $base-font-size						: 16px;
@@ -24,3 +29,5 @@ body{@include adjust-font-size-to($base-font-size, 4); color:$primary;  font-fam
 a{ @include transition-property(color);@include transition-duration(.125s);@include transition-timing-function(ease-in-out); }
 a:hover{ color:$tertiary; @include transition-property(color);@include transition-duration(.125s);@include transition-timing-function(ease-in-out); }
 ul li{ list-style-type:none; }
+
+.single .schedule h2{ color:$tertiary; @include adjust-font-size-to(22px); text-decoration:none; font-family: 'ITCAvantGardeStd-Bold', helvetica, arial, sans-serif; @include padding-trailer(1); @include padding-leader(4);}

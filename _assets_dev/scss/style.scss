@@ -28,7 +28,7 @@ body.push-left{
   	@include transition-duration(.875s);
   	@include transition-timing-function(ease-in-out);
 }
-
+.single .content p.no-padding{ padding-bottom:0; }
 .container {@extend .clearfix; margin: 0 auto; max-width: 900px; width:100%; padding:0 20px; position:relative; }
 .about #board .container,
 .attendees #attendee-list .container,{ max-width:1200px; }
@@ -43,6 +43,7 @@ img{ max-width:100%; height:auto; }
 .white{ background:$primary; color:$secondary; padding:3.5em 0; a{ color:$red; } }
 .full, .half{ @include column(12); }
 .container footer, .container header, .container .content{ @include column(12); }
+
 .people {
 	@extend .is-centered;
 	@include transition-property(all);
@@ -373,6 +374,11 @@ nav.menu.active{
 
 .g-map{ display:block; @include leader(3); @include trailer(8); height:150px; width:100%; }
 
+.button.sold-out{
+	background:$primary;
+	color:$red;
+}
+
 .button{
 	@extend .is-centered;
 	@include adjust-font-size-to(20px);
@@ -412,6 +418,13 @@ nav.menu.active{
 }
 
 //-------------------------------------------------------------------------------------------------  Speakers - Single
+.schedule{
+	.row{ @extend .clearfix; @include padding-trailer(4); }
+	.details{ @include adjust-font-size-to(12px); }
+	.event, .time{ color:darken($secondary, 15%); }
+	.location{ @extend .is-uppercase; background: url(../images/icons/pin.svg); display:inline-block; height:14px; width:8px; background-size:cover; margin:0 5px -2px 0; }
+	.locale{ @extend .is-uppercase; @include adjust-font-size-to(10px); margin-top:5px; letter-spacing:1px; }
+}
 #single-speaker{
 	.left, .right{ @include column(12); }
 	.left{
@@ -611,6 +624,14 @@ nav.menu.active{
 		}
 	}
 	.current-sponsors li{ @include column(6); }
+
+	//--------------------------------------------------------------------- Schedule
+	.schedule-time, .schedule-location{
+		display:block;
+		float:left;
+	}
+	.schedule-time{ width:25%; }
+	.schedule-location{ width:75%; }
 }
 
 //-------------------------------------------------------------------------------------------------  Media Queries - 40em
@@ -651,6 +672,7 @@ nav.menu.active{
 	//--------------------------------------------------------------------- About
 	.single .content{ @include adjust-font-size-to(20px, 5); }
 	.single .colored{ padding:2.5em 2.5em 1em 2.5em; }
+
 
 	//--------------------------------------------------------------------- Why
 	#why{
@@ -755,6 +777,7 @@ nav.menu.active{
 
 	//--------------------------------------------------------------------- Board
 	.people li{ @include column(4); min-height:300px; }
+
 }
 
 
